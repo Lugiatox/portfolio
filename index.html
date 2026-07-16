@@ -148,7 +148,14 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
 .bpanhead span{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sub)}
 .bclose{border:1px solid var(--line);background:var(--bg);border-radius:100px;padding:8px 16px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;transition:.15s}
 .bclose:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-@media(max-width:760px){.brandbtns{grid-template-columns:1fr}}
+/* brand-kit board deck (natural aspect, click to enlarge) */
+.bdeck{column-count:2;column-gap:10px;max-width:1400px;margin:0 auto;padding:0 20px}
+.bdcell{display:block;width:100%;border:0;padding:0;margin:0 0 10px;background:var(--bg2);border-radius:10px;overflow:hidden;cursor:zoom-in;break-inside:avoid}
+.bdcell img{width:100%;display:block;transition:transform .3s}
+.bdcell:hover img{transform:scale(1.02)}
+@media(max-width:760px){.brandbtns{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.bdeck{column-count:1}}
+@media(max-width:480px){.brandbtns{grid-template-columns:1fr}}
 
 /* BRANDING GALLERIES (full-bleed, seamless, grouped) */
 .bhead{padding:30px 20px 12px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sub)}
@@ -164,20 +171,16 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
 .bcell img{width:100%;height:100%;object-fit:cover;transition:transform .25s}
 .bcell:hover img{transform:scale(1.08)}
 
-/* COMMENTS (running-bond brick wall: landscape bricks, mortar lines, offset rows). Spans tuned for 12 comments. */
-.cgrid{display:grid;grid-template-columns:repeat(8,1fr);grid-auto-rows:160px;gap:3px;background:#c1c0b7}
-.cmt{grid-column:span 2;background:var(--bg2);padding:20px 22px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
-.cmt:nth-child(odd){background:#efeee6}
-.cmt:nth-child(5),.cmt:nth-child(9){grid-column:span 1;padding:17px 15px}
-.cmt:nth-child(5) .cf,.cmt:nth-child(9) .cf{gap:7px;margin-top:12px}
-.cmt:nth-child(5) .cav,.cmt:nth-child(9) .cav{width:26px;height:26px}
-.cmt:nth-child(5) .cn,.cmt:nth-child(9) .cn{font-size:11px}
-.cmt:nth-child(5) .cc,.cmt:nth-child(9) .cc{font-size:10px}
-.cmt:nth-child(12){grid-column:span 4}
-.cmt .ct{font-size:14.5px;line-height:1.45}
-.cmt .cf{margin-top:14px;display:flex;align-items:center;gap:9px}
-.cav{width:32px;height:32px;border-radius:50%;object-fit:cover;background:var(--bg);flex:0 0 auto}
-.cmt .cn{font-weight:600;font-size:12.5px}.cmt .cc{font-size:11.5px;color:var(--sub)}
+/* COMMENTS (right-to-left marquee of window cards, like the clients strip) */
+.cmarq{overflow:hidden;padding:6px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.ctrack2{display:inline-flex;align-items:stretch;gap:16px;padding-left:16px;animation:cyc2 70s linear infinite;will-change:transform}
+.cmarq:hover .ctrack2{animation-play-state:paused}
+@keyframes cyc2{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.cmt{flex:0 0 330px;width:330px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;justify-content:space-between}
+.cmt .ct{font-size:14.5px;line-height:1.5}
+.cmt .cf{margin-top:16px;display:flex;align-items:center;gap:10px}
+.cav{width:34px;height:34px;border-radius:50%;object-fit:cover;background:var(--bg);flex:0 0 auto}
+.cmt .cn{font-weight:600;font-size:13px}.cmt .cc{font-size:12px;color:var(--sub)}
 
 /* CONTACT */
 .contact{border-top:1px solid var(--line);text-align:center;padding:96px 0}
@@ -198,8 +201,8 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
 .mimg{display:block;max-width:95vw;max-height:90vh;margin:0 auto;border-radius:8px}
 .mclose{position:fixed;top:20px;right:24px;z-index:1001;background:#fff;color:var(--ink);border:0;width:44px;height:44px;border-radius:50%;font-size:17px;cursor:pointer}
 
-@media(max-width:900px){.bgrid{grid-template-columns:repeat(4,1fr)}.bgrid169 .bcell,.bgrid169 .bcell.wide{grid-column:span 3;aspect-ratio:16/9}.bgrid4{grid-template-columns:repeat(2,1fr)}.cgrid{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}.cmt,.cmt:nth-child(5),.cmt:nth-child(9),.cmt:nth-child(12){grid-column:auto;padding:22px 22px}.menu a:not(.talk){display:none}}
-@media(max-width:560px){.bgrid{grid-template-columns:repeat(3,1fr)}.bgrid169 .bcell,.bgrid169 .bcell.wide{grid-column:span 6}.cgrid{grid-template-columns:1fr}}
+@media(max-width:900px){.bgrid{grid-template-columns:repeat(4,1fr)}.bgrid169 .bcell,.bgrid169 .bcell.wide{grid-column:span 3;aspect-ratio:16/9}.bgrid4{grid-template-columns:repeat(2,1fr)}.menu a:not(.talk){display:none}}
+@media(max-width:560px){.bgrid{grid-template-columns:repeat(3,1fr)}.bgrid169 .bcell,.bgrid169 .bcell.wide{grid-column:span 6}.cmt{flex-basis:284px;width:284px}}
 </style>
 </head>
 <body>
@@ -216,7 +219,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
     <div class="scrim"></div>
     <div class="inner">
       <h1>Hi, I'm Pedro.</h1>
-      <p>I turn footage and ideas into videos people actually finish. Editing, motion and original animation for creators and brands, backed by a degree in digital animation.</p>
+      <p>I make visual content people actually watch. Editing, motion graphics and original 2D and 3D animation for creators and brands, backed by a degree in digital animation.</p>
       <div class="cta">
         <button class="btn btn-solid" onclick="go('work')">See the work</button>
         <button class="btn btn-ghost" onclick="go('contact')">Get in touch</button>
@@ -233,20 +236,21 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
     <div class="lead-block">
       <span class="eyebrow">What I do</span>
       <h2 class="secttl">Editing that earns attention, and turns it into growth.</h2>
-      <p class="sectp">Great content still gets scrolled past if the edit doesn't hold. I cut for pacing and retention, match it to your brand, and build the motion and animation that make it stick. One editor, the whole pipeline.</p>
+      <p class="sectp">Great content gets scrolled past if the edit doesn't hold. I cut for pacing and retention, match it to your brand, and build the motion and animation that make it stick. Trained in digital animation, from 3D and hand-drawn 2D to stop-motion, nominated for Best Young Filmmaker at Cine Anima 2020, and part of the team behind Os Demónios do Meu Avô, Portugal's first stop-motion feature. One person, the whole pipeline.</p>
     </div>
     <div class="svc-cols">
       <div class="svc-grid">
         <div class="svc"><h3>Long-form editing</h3><p>Podcasts, interviews and YouTube videos cut to hold attention start to finish.</p></div>
         <div class="svc"><h3>Short-form</h3><p>Reels, Shorts and TikToks engineered to hook in the first second.</p></div>
         <div class="svc"><h3>Motion graphics</h3><p>Animated titles, lower-thirds, callouts and explainer sequences.</p></div>
-        <div class="svc"><h3>Animation</h3><p>Original 2D and 3D animation, characters and explainers built from scratch.</p></div>
+        <div class="svc"><h3>Animation</h3><p>Original 2D, 3D and stop-motion animation, characters and explainers built from scratch.</p></div>
         <div class="svc"><h3>AI-assisted animation</h3><p>Stylised animated pieces, produced fast without losing polish.</p></div>
         <div class="svc"><h3>Branding</h3><p>Brand IP and social graphics: posts, world art and visual identity.</p></div>
       </div>
       <div class="tools">
-        <div class="tgroup"><div class="tglab">Editing</div><div class="chips"><span class="chip">Adobe Premiere Pro</span><span class="chip">Adobe After Effects</span><span class="chip">Adobe Photoshop</span><span class="chip">Adobe Illustrator</span><span class="chip">Canva</span><span class="chip">Figma</span></div></div>
-        <div class="tgroup"><div class="tglab">Animation</div><div class="chips"><span class="chip">Blender</span><span class="chip">Autodesk Maya</span><span class="chip">3D modelling</span><span class="chip">Rigging</span><span class="chip">Character animation</span><span class="chip">Motion templates</span></div></div>
+        <div class="tgroup"><div class="tglab">Editing &amp; design</div><div class="chips"><span class="chip">Adobe Premiere Pro</span><span class="chip">Adobe After Effects</span><span class="chip">Adobe Photoshop</span><span class="chip">Adobe Illustrator</span><span class="chip">Canva</span><span class="chip">Figma</span></div></div>
+        <div class="tgroup"><div class="tglab">3D</div><div class="chips"><span class="chip">Blender</span><span class="chip">Autodesk Maya</span><span class="chip">Modelling</span><span class="chip">Texturing</span><span class="chip">Rigging</span><span class="chip">Lighting</span><span class="chip">Sculpting</span><span class="chip">Motion capture</span></div></div>
+        <div class="tgroup"><div class="tglab">2D &amp; film</div><div class="chips"><span class="chip">Hand-drawn animation</span><span class="chip">Stop motion</span><span class="chip">Motion graphics</span><span class="chip">2D rigging</span><span class="chip">Storyboarding</span><span class="chip">Cinematography</span></div></div>
         <div class="tgroup"><div class="tglab">AI workflow</div><div class="chips"><span class="chip">Google Flow</span><span class="chip">Claude Code</span><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini</span><span class="chip">ElevenLabs</span><span class="chip">JSON</span></div></div>
       </div>
     </div>
@@ -340,14 +344,9 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
     <div class="lead-block">
       <span class="eyebrow">Branding</span>
       <h2 class="secttl">I not only edit, I also build brands.</h2>
-      <p class="sectp">Not just video. Pick a brand to open the full identity work I made for it: X branding, the world it lives in, and branded posts.</p>
+      <p class="sectp">Not just video. I build brand identities too. Pick a brand to open its full kit: logos, colour, type, world art and posts.</p>
     </div>
-    <div class="brandbtns">
-      <button class="brandbtn" data-panel="brand-zinc" aria-expanded="false">
-        <div class="bb-cover"><img src="assets/branding/large/brand-17.jpg" alt="ZINC brand art"></div>
-        <div class="bb-meta"><span class="bb-name">ZINC</span><span class="bb-hint">Full brand identity →</span></div>
-      </button>
-    </div>
+    <div class="brandbtns" id="brandbtns"></div>
   </div></section>
   <section class="chan brandpanel" id="brand-zinc" hidden style="padding-top:0">
     <div class="bpanhead"><span>ZINC · full brand identity (zinc.cash)</span><button class="bclose" onclick="closeBrand()">Close ✕</button></div>
@@ -358,9 +357,10 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
     <div class="bhead">03 · Branded posts</div>
     <div class="bgrid4" id="bgC"></div>
   </section>
+  <div id="brandpanels"></div>
 
-  <!-- COMMENTS (full-bleed seamless grid) -->
-  <section class="chan" id="comments"><div class="cgrid" id="cgrid"></div></section>
+  <!-- COMMENTS (right-to-left marquee of window cards) -->
+  <section class="chan" id="comments"><div class="cmarq"><div class="ctrack2" id="ctrack2"></div></div></section>
 
   <!-- CONTACT -->
   <section class="contact" id="contact"><div class="wrap">
@@ -422,8 +422,7 @@ const CLIENTS=[
 ];
 // av = generated NPC avatar (assets/comments/npc/). The commenters' real YouTube pfps
 // are kept in assets/comments/*.jpg if we ever want to swap back.
-// Order tuned to the brick layout: slots 5 and 9 are half-bricks (shortest quotes),
-// slot 12 is a double-wide brick (the long one); the two X replies stay up top.
+// Scrolls right-to-left in the comments marquee. av = generated NPC avatar or a real X pfp.
 const COMMENTS=[
  {t:"This video's got some good editing and nice storytelling, Sebb 🤩",a:"solmoek3559",c:"Jupiter",av:"npc/npc01.jpg"},
  {t:"sound on, this one is a banger!",a:"jup_VRFD",c:"Jupiter on X",av:"x_vrfd.jpg"},
@@ -484,8 +483,8 @@ const BRAND_B=[17,13,1,16,11,12,10,18,26,21,23,19,14,15,31,8];
 const BRAND_C=[2,22,24,28,38,25,3,27,4,30];
 function buildBrand(id,list){
  const g=document.getElementById(id);
- // eager, not lazy: these live in a hidden panel, so they preload while hidden and show instantly when the brand is opened.
- g.innerHTML=list.map(n=>{const nn=String(n).padStart(2,'0');return `<button class="bcell" data-nn="${nn}"><img src="assets/branding/thumb/brand-${nn}.jpg"></button>`;}).join('');
+ // data-src (not src): loaded on first open, so the hidden panel doesn't weigh down the initial page.
+ g.innerHTML=list.map(n=>{const nn=String(n).padStart(2,'0');return `<button class="bcell" data-nn="${nn}"><img data-src="assets/branding/thumb/brand-${nn}.jpg"></button>`;}).join('');
  g.querySelectorAll('.bcell').forEach(b=>b.onclick=()=>openModal(`<img class="mimg" src="assets/branding/large/brand-${b.dataset.nn}.jpg">`));
 }
 buildBrand('bgA',BRAND_A);buildBrand('bgB',BRAND_B);buildBrand('bgC',BRAND_C);
@@ -497,7 +496,24 @@ fillLastRow(document.getElementById('bgB'));
  else if(r===1) t[t.length-1].style.gridColumn='span 4';
 })();
 
-// Brand buttons: click one to reveal its full brand panel (built to hold more brands later).
+// Every brand as a cover button. ZINC has the bespoke 3-gallery panel above; the rest render a board deck.
+const BRANDS=[
+ {slug:'zinc',     name:'ZINC',          hint:'Full brand identity', cover:'assets/branding/large/brand-17.jpg', bespoke:true},
+ {slug:'validator',name:'validator.com', hint:'Brand kit', cover:'assets/branding/validator/large/06.jpg', n:7},
+ {slug:'fogees',   name:'Fogees Hub',    hint:'Brand kit', cover:'assets/branding/fogees/large/03.jpg',    n:7},
+ {slug:'trader',   name:'Trader Nation', hint:'Brand kit', cover:'assets/branding/trader/large/04.jpg',    n:5},
+ {slug:'seb',      name:'Seb Montgomery',hint:'Brand kit', cover:'assets/branding/seb/large/03.jpg',       n:9},
+ {slug:'aiseb',    name:'AI with Seb',   hint:'Brand kit', cover:'assets/branding/aiseb/large/02.jpg',     n:5}
+];
+document.getElementById('brandbtns').innerHTML=BRANDS.map(b=>
+ `<button class="brandbtn" data-panel="brand-${b.slug}" aria-expanded="false"><div class="bb-cover"><img src="${b.cover}" alt="${esc(b.name)} brand art"></div><div class="bb-meta"><span class="bb-name">${esc(b.name)}</span><span class="bb-hint">${esc(b.hint)} →</span></div></button>`).join('');
+document.getElementById('brandpanels').innerHTML=BRANDS.filter(b=>!b.bespoke).map(b=>{
+ const cells=Array.from({length:b.n},(_,i)=>{const nn=String(i+1).padStart(2,'0');return `<button class="bdcell" data-full="assets/branding/${b.slug}/large/${nn}.jpg"><img data-src="assets/branding/${b.slug}/thumb/${nn}.jpg" alt=""></button>`;}).join('');
+ return `<section class="chan brandpanel" id="brand-${b.slug}" hidden style="padding-top:0"><div class="bpanhead"><span>${esc(b.name)} · brand kit</span><button class="bclose" onclick="closeBrand()">Close ✕</button></div><div class="bdeck">${cells}</div></section>`;
+}).join('');
+document.querySelectorAll('.bdcell').forEach(b=>b.onclick=()=>openModal(`<img class="mimg" src="${b.dataset.full}">`));
+
+// Brand buttons: click one to reveal its panel; its images load on first open.
 function closeBrand(){
  document.querySelectorAll('.brandbtn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-expanded','false');});
  document.querySelectorAll('.brandpanel').forEach(p=>p.hidden=true);
@@ -506,12 +522,19 @@ function closeBrand(){
 function openBrand(id){
  document.querySelectorAll('.brandbtn').forEach(b=>{const on=b.dataset.panel===id;b.classList.toggle('active',on);b.setAttribute('aria-expanded',on);});
  document.querySelectorAll('.brandpanel').forEach(p=>p.hidden=(p.id!==id));
- const p=document.getElementById(id); if(p){p.hidden=false;p.scrollIntoView({behavior:'smooth',block:'start'});}
+ const p=document.getElementById(id); if(!p)return;
+ p.hidden=false;
+ p.querySelectorAll('img[data-src]').forEach(im=>{im.src=im.dataset.src;im.removeAttribute('data-src');});
+ p.scrollIntoView({behavior:'smooth',block:'start'});
 }
 document.querySelectorAll('.brandbtn').forEach(b=>b.onclick=()=>{ b.classList.contains('active')?closeBrand():openBrand(b.dataset.panel); });
 
 // comments
-document.getElementById('cgrid').innerHTML=COMMENTS.map(r=>`<div class="cmt"><div class="ct">“${esc(r.t)}”</div><div class="cf"><img class="cav" loading="lazy" src="assets/comments/${r.av}" alt=""><div><div class="cn">@${r.a}</div><div class="cc">${r.c}</div></div></div></div>`).join('');
+// duplicated (one+one) so the right-to-left loop is seamless, like the clients strip
+document.getElementById('ctrack2').innerHTML=(()=>{
+ const card=r=>`<div class="cmt"><div class="ct">“${esc(r.t)}”</div><div class="cf"><img class="cav" src="assets/comments/${r.av}" alt=""><div><div class="cn">@${r.a}</div><div class="cc">${r.c}</div></div></div></div>`;
+ const one=COMMENTS.map(card).join('');return one+one;
+})();
 </script>
 </body>
 </html>
