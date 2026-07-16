@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pedro | Video Editor & Animator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--bg2:#f5f5f2;--ink:#141414;--sub:#6b6b6b;--line:#e6e6e2;--disp:'Inter',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--disp);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5}
+a{color:inherit;text-decoration:none}img,video{display:block;max-width:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.wrapwide{max-width:1560px;margin:0 auto;padding:0 20px}
+h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
+
+/* NAV */
+.bar{position:sticky;top:0;z-index:200;background:transparent;transition:background .25s,border-color .25s;border-bottom:1px solid transparent}
+.bar .row{max-width:1440px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
+.bar.scrolled{background:rgba(255,255,255,.9);backdrop-filter:saturate(160%) blur(10px);border-bottom-color:var(--line)}
+.logo{font-weight:800;font-size:19px;letter-spacing:-.03em;color:#fff}
+.menu{display:flex;align-items:center;gap:28px}
+.menu a{font-weight:500;font-size:14px;color:rgba(255,255,255,.82)}
+.menu a:hover{color:#fff}
+.bar.scrolled .logo{color:var(--ink)}
+.bar.scrolled .menu a{color:var(--sub)}.bar.scrolled .menu a:hover{color:var(--ink)}
+.bar.scrolled .menu .talk{color:var(--ink);font-weight:600}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:110px 32px 80px;overflow:hidden;margin-top:-70px}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero .scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(12,12,14,.5),rgba(12,12,14,.68))}
+.hero .inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.hero h1{color:#fff;font-size:clamp(58px,12vw,164px);font-weight:900;letter-spacing:-.045em;line-height:.96;text-shadow:0 4px 30px rgba(0,0,0,.35)}
+.hero p{max-width:580px;margin:30px auto 0;font-size:clamp(16px,2vw,21px);color:rgba(255,255,255,.9);line-height:1.6}
+.hero .cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.btn{font-size:15px;font-weight:600;padding:15px 30px;cursor:pointer;border-radius:100px;border:1px solid;transition:.15s}
+.btn-solid{background:#fff;color:var(--ink);border-color:#fff}.btn-solid:hover{background:transparent;color:#fff}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}.btn-ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+.scrolldown{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.7);font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+
+/* CLIENTS */
+.clients{border-bottom:1px solid var(--line);background:var(--bg2);overflow:hidden;padding:22px 0}
+.clients .lab{text-align:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#9a9a92;margin-bottom:14px}
+.cmask{overflow:hidden;white-space:nowrap}
+.ctrack{display:inline-flex;align-items:center;gap:56px;padding-left:56px;animation:cyc 55s linear infinite}
+.ctrack .cl{display:inline-flex;align-items:center;gap:12px;font-size:21px;font-weight:700;color:#a7a79d;white-space:nowrap}
+.ctrack .cl img{width:34px;height:34px;border-radius:50%;object-fit:cover;background:var(--line);flex:0 0 auto}
+.ctrack .cl:hover{color:var(--ink)}
+@keyframes cyc{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS (no titles) */
+.chan{padding:40px 0;position:relative}
+
+/* SERVICES + RESULTS (text sections) */
+.textsec{padding:76px 0}
+.lead-block{max-width:780px}
+.eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sub);margin-bottom:14px}
+.secttl{font-size:clamp(28px,4.4vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.06}
+.sectp{font-size:clamp(16px,1.5vw,19px);line-height:1.62;color:var(--sub);margin-top:18px}
+#services{padding:52px 0}
+#services .lead-block{max-width:820px;margin:0 auto;text-align:center}
+#services .secttl{font-size:clamp(24px,3.2vw,40px)}
+#services .sectp{font-size:15px;margin-top:12px}
+.svc-cols{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:start;margin-top:36px}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.svc{background:var(--bg);padding:17px 18px}
+.svc h3{font-size:14.5px;font-weight:700;margin-bottom:5px}
+.svc p{font-size:12.5px;color:var(--sub);line-height:1.45}
+.tools{margin-top:0}
+.tgroup{margin-top:14px}
+.tgroup:first-child{margin-top:0}
+.tglab{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sub);margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:12px;font-weight:600;padding:6px 12px;border:1px solid var(--line);border-radius:100px;background:var(--bg);white-space:nowrap}
+@media(max-width:900px){.svc-cols{grid-template-columns:1fr;gap:36px}}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px}
+.stat .num{font-size:clamp(34px,5vw,58px);font-weight:800;letter-spacing:-.03em;line-height:1}
+.stat .lbl{font-size:13px;color:var(--sub);margin-top:8px;line-height:1.35}
+@media(max-width:820px){.svc-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.svc-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
+
+/* PER-CHANNEL RESULTS (stacked, full width) */
+.chanres{display:grid;grid-template-columns:1fr;gap:16px;margin-top:48px}
+.cr{border:1px solid var(--line);border-radius:14px;padding:22px 22px 16px;background:var(--bg)}
+.crh{display:flex;align-items:center;gap:13px;margin-bottom:16px}
+.crh img{width:42px;height:42px;border-radius:50%;object-fit:cover;background:var(--line);flex:0 0 auto}
+.crn{font-weight:800;font-size:16px}
+.crs{font-size:12.5px;color:var(--sub);margin-top:2px;line-height:1.4}
+.crvids{display:grid;grid-template-columns:1fr 1fr;gap:22px;border-top:1px solid var(--line);padding:18px 0}
+.crvids.one{grid-template-columns:1fr}
+.yv{display:flex;gap:16px;align-items:flex-start}
+.yv img{width:min(240px,42%);aspect-ratio:16/9;object-fit:cover;border-radius:10px;flex:0 0 auto;background:var(--bg2)}
+.yvt{font-size:15px;font-weight:600;line-height:1.4}
+.yvd{font-size:12px;color:var(--sub);margin-top:3px}
+.yvn{font-size:13px;color:var(--sub);margin-top:8px;line-height:1.4}
+.yvn b{color:var(--ink);font-size:26px;font-weight:800;letter-spacing:-.02em}
+.crfoot{border-top:1px solid var(--line);padding:12px 0 4px;font-size:13.5px;font-weight:700}
+@media(max-width:700px){.crvids{grid-template-columns:1fr}}
+
+/* WORK + ANIMATION GRID (full-bleed, seamless: no gaps, no radius, no shadow) */
+.gridhead{margin:0 0 16px;padding:0 20px}
+.vgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:0}
+.vtile{grid-column:span 2;position:relative;display:block;width:100%;padding:0;border:0;background:#0a0a0a;overflow:hidden;cursor:pointer;font:inherit;text-align:left}
+.vtile .th{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0a0a0a}
+.vtile .th img{width:100%;height:100%;object-fit:cover;transition:transform .45s cubic-bezier(.2,.6,.2,1)}
+.vtile:hover .th img{transform:scale(1.045)}
+.vtile .lighten{position:absolute;inset:0;background:#fff;opacity:0;transition:opacity .25s;pointer-events:none}
+.vtile:hover .lighten{opacity:.16}
+.vtile .pbtn{position:absolute;left:50%;top:50%;width:56px;height:56px;transform:translate(-50%,-50%) scale(.9);border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:19px;padding-left:3px;opacity:0;transition:.25s;pointer-events:none}
+.vtile:hover .pbtn{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.vtile .tag{position:absolute;left:0;right:0;bottom:0;padding:26px 15px 13px;background:linear-gradient(to top,rgba(8,8,10,.82),rgba(8,8,10,0));color:#fff;font-size:12.5px;font-weight:600;letter-spacing:.01em;opacity:0;transform:translateY(7px);transition:.28s;pointer-events:none}
+.vtile:hover .tag{opacity:1;transform:none}
+.vtile.wide{grid-column:span 3}
+.vtile.wide .th{aspect-ratio:2/1}
+@media(max-width:900px){
+ .vtile,.vtile.wide{grid-column:span 3}
+ .vtile.wide .th{aspect-ratio:16/9}
+ .vgrid .vtile:last-child:nth-child(odd){grid-column:span 6}
+ .vgrid .vtile:last-child:nth-child(odd) .th{aspect-ratio:2/1}
+}
+@media(max-width:600px){
+ .vtile,.vtile.wide,.vgrid .vtile:last-child:nth-child(odd){grid-column:span 6}
+ .vtile .th,.vtile.wide .th,.vgrid .vtile:last-child:nth-child(odd) .th{aspect-ratio:16/9}
+ .vtile .tag{opacity:1;transform:none}
+}
+
+/* BRANDING GALLERIES (full-bleed, seamless, grouped) */
+.bhead{padding:30px 20px 12px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sub)}
+.bgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:0}
+.bgrid169{display:grid;grid-template-columns:repeat(6,1fr);gap:0}
+.bgrid169 .bcell{grid-column:span 2;aspect-ratio:16/9}
+.bgrid169 .bcell.wide{grid-column:span 3;aspect-ratio:2/1}
+.bgrid4{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.bgrid4 .bcell.wide{grid-column:span 2}
+.bgrid2{display:grid;grid-template-columns:repeat(2,1fr);gap:0}
+.bgrid2 .bcell{aspect-ratio:1/1}
+.bcell{aspect-ratio:1/1;overflow:hidden;cursor:pointer;background:var(--bg2);border:0;padding:0}
+.bcell img{width:100%;height:100%;object-fit:cover;transition:transform .25s}
+.bcell:hover img{transform:scale(1.08)}
+
+/* COMMENTS */
+.cgrid{column-count:4;column-gap:14px}
+.cgrid>*{break-inside:avoid;margin-bottom:14px}
+.cmt{border:1px solid var(--line);border-radius:12px;padding:20px;background:#fff}
+.cmt .ct{font-size:15px;line-height:1.5}
+.cmt .cf{margin-top:14px;display:flex;align-items:center;gap:10px}
+.cav{width:32px;height:32px;border-radius:50%;object-fit:cover;background:var(--bg2);flex:0 0 auto}
+.cmt .cn{font-weight:600;font-size:13px}.cmt .cc{font-size:12px;color:var(--sub)}
+
+/* CONTACT */
+.contact{border-top:1px solid var(--line);text-align:center;padding:96px 0}
+.contact h2{font-size:clamp(34px,6vw,72px);font-weight:900;letter-spacing:-.04em}
+.contact p{color:var(--sub);margin:20px auto 0;max-width:440px;line-height:1.6}
+.contact .cta{margin-top:34px;display:flex;justify-content:center}
+.foot{border-top:1px solid var(--line);padding:24px 0}
+.foot .row{max-width:1440px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.foot .socials{display:flex;gap:22px}
+.foot a{color:var(--sub);font-size:14px}.foot a:hover{color:var(--ink)}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:1000;background:rgba(18,18,18,.93);display:none;align-items:center;justify-content:center;padding:24px}
+.modal.on{display:flex}
+.mbody{width:min(1100px,95vw)}
+.mvid{position:relative;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden;box-shadow:0 40px 90px -30px #000}
+.mvid iframe,.mvid video{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
+.mimg{display:block;max-width:95vw;max-height:90vh;margin:0 auto;border-radius:8px}
+.mclose{position:fixed;top:20px;right:24px;z-index:1001;background:#fff;color:var(--ink);border:0;width:44px;height:44px;border-radius:50%;font-size:17px;cursor:pointer}
+
+@media(max-width:900px){.bgrid{grid-template-columns:repeat(4,1fr)}.bgrid169 .bcell,.bgrid169 .bcell.wide{grid-column:span 3;aspect-ratio:16/9}.bgrid4{grid-template-columns:repeat(2,1fr)}.cgrid{column-count:2}.menu a:not(.talk){display:none}}
+@media(max-width:560px){.bgrid{grid-template-columns:repeat(3,1fr)}.bgrid169 .bcell,.bgrid169 .bcell.wide{grid-column:span 6}.cgrid{column-count:1}}
+</style>
+</head>
+<body>
+
+<header class="bar"><div class="row">
+  <a href="#top" class="logo">Pedro</a>
+  <nav class="menu"><a href="#work">Work</a><a href="#animations">Animation</a><a href="#branding">Branding</a><a href="#contact" class="talk">Let's talk</a></nav>
+</div></header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <video class="bg" autoplay muted loop playsinline poster="assets/posters/rrXsN7-9RNI.jpg"><source src="assets/hero_montage.mp4" type="video/mp4"></video>
+    <div class="scrim"></div>
+    <div class="inner">
+      <h1>Hi, I'm Pedro.</h1>
+      <p>I turn footage and ideas into videos people actually finish. Editing, motion and original animation for creators and brands, backed by a degree in digital animation.</p>
+      <div class="cta">
+        <button class="btn btn-solid" onclick="go('work')">See the work</button>
+        <button class="btn btn-ghost" onclick="go('contact')">Get in touch</button>
+      </div>
+    </div>
+    <div class="scrolldown">scroll ↓</div>
+  </section>
+
+  <!-- CLIENTS -->
+  <div class="clients"><div class="lab">Teams I've worked with</div><div class="cmask"><div class="ctrack" id="ctrack"></div></div></div>
+
+  <!-- SERVICES (centered intro, grid left, skills right) -->
+  <section class="textsec" id="services"><div class="wrap">
+    <div class="lead-block">
+      <span class="eyebrow">What I do</span>
+      <h2 class="secttl">Editing that earns attention, and turns it into growth.</h2>
+      <p class="sectp">Great content still gets scrolled past if the edit doesn't hold. I cut for pacing and retention, match it to your brand, and build the motion and animation that make it stick. One editor, the whole pipeline.</p>
+    </div>
+    <div class="svc-cols">
+      <div class="svc-grid">
+        <div class="svc"><h3>Long-form editing</h3><p>Podcasts, interviews and YouTube videos cut to hold attention start to finish.</p></div>
+        <div class="svc"><h3>Short-form</h3><p>Reels, Shorts and TikToks engineered to hook in the first second.</p></div>
+        <div class="svc"><h3>Motion graphics</h3><p>Animated titles, lower-thirds, callouts and explainer sequences.</p></div>
+        <div class="svc"><h3>Animation</h3><p>Original 2D and 3D animation, characters and explainers built from scratch.</p></div>
+        <div class="svc"><h3>AI-assisted animation</h3><p>Stylised animated pieces, produced fast without losing polish.</p></div>
+        <div class="svc"><h3>Branding</h3><p>Brand IP and social graphics: posts, world art and visual identity.</p></div>
+      </div>
+      <div class="tools">
+        <div class="tgroup"><div class="tglab">Editing</div><div class="chips"><span class="chip">Adobe Premiere Pro</span><span class="chip">Adobe After Effects</span><span class="chip">Adobe Photoshop</span><span class="chip">Adobe Illustrator</span><span class="chip">Canva</span><span class="chip">Figma</span></div></div>
+        <div class="tgroup"><div class="tglab">Animation</div><div class="chips"><span class="chip">Blender</span><span class="chip">Autodesk Maya</span><span class="chip">3D modelling</span><span class="chip">Rigging</span><span class="chip">Character animation</span><span class="chip">Motion templates</span></div></div>
+        <div class="tgroup"><div class="tglab">AI workflow</div><div class="chips"><span class="chip">Google Flow</span><span class="chip">Claude Code</span><span class="chip">Claude</span><span class="chip">ChatGPT</span><span class="chip">Gemini</span><span class="chip">ElevenLabs</span><span class="chip">JSON</span></div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- WORK (all videos, one full-bleed grid) -->
+  <section class="chan" id="work">
+    <div class="gridhead"><span class="eyebrow">Selected work</span></div>
+    <div class="vgrid" id="videoGrid"></div>
+  </section>
+
+  <!-- ANIMATION + MOTION (one full-bleed grid) -->
+  <section class="chan" id="animations">
+    <div class="gridhead"><span class="eyebrow">Animation &amp; motion</span></div>
+    <div class="vgrid" id="animGrid"></div>
+  </section>
+
+  <!-- RESULTS (real numbers pulled from YouTube, July 2026) -->
+  <section class="textsec" id="results"><div class="wrap">
+    <div class="lead-block">
+      <span class="eyebrow">The results</span>
+      <h2 class="secttl">The edits perform.</h2>
+      <p class="sectp">Real numbers, pulled straight from YouTube as of July 2026, from multiple channels: Jupiter Onchain, Seb Montgomery, AI with Seb, On Solana, ZINC, UPROCK and more.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">1.5M+</div><div class="lbl">views across my edits</div></div>
+      <div class="stat"><div class="num">622+</div><div class="lbl">videos edited</div></div>
+      <div class="stat"><div class="num">54K+</div><div class="lbl">likes</div></div>
+      <div class="stat"><div class="num">9.7K+</div><div class="lbl">comments</div></div>
+    </div>
+    <div class="chanres">
+      <div class="cr">
+        <div class="crh"><img src="assets/clients/seb.jpg" alt=""><div><div class="crn">Seb Montgomery</div><div class="crs">227 videos · 926K views</div></div></div>
+        <div class="crvids">
+          <div class="yv"><img loading="lazy" src="assets/results/iwWUqTpn0CQ.jpg"><div>
+            <div class="yvt">These Are THE BEST Crypto Portfolios of 2025!</div>
+            <div class="yvd">The next upload, nine days later · Sep 2025</div>
+            <div class="yvn"><b>2,042</b> views · 119 likes · 19 comments</div>
+          </div></div>
+          <div class="yv"><img loading="lazy" src="assets/results/ZPReMS8bnlA.jpg"><div>
+            <div class="yvt">The Solana Seeker Phone is Here and it's ... Free?</div>
+            <div class="yvd">Sep 2025</div>
+            <div class="yvn"><b>54,253</b> views · 1,229 likes · 191 comments</div>
+          </div></div>
+        </div>
+        <div class="crfoot">26x the views of the upload right after it.</div>
+      </div>
+      <div class="cr">
+        <div class="crh"><img src="assets/clients/jupiter.jpg" alt=""><div><div class="crn">Jupiter Onchain</div><div class="crs">381 videos · 648K views</div></div></div>
+        <div class="crvids">
+          <div class="yv"><img loading="lazy" src="assets/results/9WiY0qWpnUU.jpg"><div>
+            <div class="yvt">You Don't Want to Miss The First Jupiverse Event</div>
+            <div class="yvd">Posted two weeks later · Nov 2024</div>
+            <div class="yvn"><b>636</b> views · 58 likes · 18 comments</div>
+          </div></div>
+          <div class="yv"><img loading="lazy" src="assets/results/rrXsN7-9RNI.jpg"><div>
+            <div class="yvt">Follow Murad Mahmudov NOW or Miss This Next Bitcoin-Level Explosion</div>
+            <div class="yvd">Oct 2024</div>
+            <div class="yvn"><b>15,026</b> views · 528 likes · 95 comments</div>
+          </div></div>
+        </div>
+        <div class="crfoot">23x the channel's typical upload of that period.</div>
+      </div>
+      <div class="cr">
+        <div class="crh"><img src="assets/clients/jupiter.jpg" alt=""><div><div class="crn">Jupiter Exchange</div><div class="crs">Animation for Jupiter's X account · @JupiterExchange</div></div></div>
+        <div class="crvids one">
+          <div class="yv"><img loading="lazy" src="assets/picks_anim/animation_06.jpg"><div>
+            <div class="yvt">Verified, Not Extinct: 2D animation for Jupiter's verification push</div>
+            <div class="yvd">Posted on X · Jun 2026</div>
+            <div class="yvn"><b>234,436</b> views · 590 likes</div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- BRANDING (ZINC): X posts -> IP building -> branded posts -->
+  <section class="textsec" id="branding" style="padding-bottom:24px"><div class="wrap">
+    <div class="lead-block">
+      <span class="eyebrow">Branding</span>
+      <h2 class="secttl">I not only edit, I also build brands.</h2>
+      <p class="sectp">Everything below is IP I created for ZINC (zinc.cash): the X posts, the world the brand lives in, and the branded art.</p>
+    </div>
+  </div></section>
+  <section class="chan" id="brandwork" style="padding-top:0">
+    <div class="bhead">01 · X branding</div>
+    <div class="bgrid2" id="bgA"></div>
+    <div class="bhead">02 · IP building</div>
+    <div class="bgrid169" id="bgB"></div>
+    <div class="bhead">03 · Branded posts</div>
+    <div class="bgrid4" id="bgC"></div>
+  </section>
+
+  <!-- COMMENTS -->
+  <section class="chan" id="comments"><div class="wrapwide"><div class="cgrid" id="cgrid"></div></div></section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact"><div class="wrap">
+    <h2>Let's make something.</h2>
+    <p>Open for freelance edits, animation and one-off projects.</p>
+    <div class="cta"><button class="btn btn-solid" style="border-color:var(--ink);color:#fff;background:var(--ink)" onclick="location.href='mailto:hello@pedro.com'">Get in touch</button></div>
+  </div></section>
+  <div class="foot"><div class="row"><span class="logo" style="color:var(--ink)">Pedro</span>
+    <div class="socials"><a href="#">YouTube</a><a href="#">X</a></div></div></div>
+</main>
+
+<div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><button class="mclose" onclick="closeModal()">✕</button><div class="mbody"></div></div>
+
+<script>
+// Every video, one grid. th = chosen in-video screenshot; tag = channel · subject · date (hover only).
+// Order deliberately interleaves channels (2 Jupiter, 1 other) so the colour is spread through the wall
+// instead of a solid block of Jupiter, and never puts two non-Jupiter tiles side by side.
+const VIDEOS=[
+ {id:'QB5pY5L-tJ8',th:'QB5pY5L-tJ8_06.jpg',tag:'Jupiter · Intro · Mar 2025'},
+ {id:'h20EDsawRR4',th:'h20EDsawRR4_n17.jpg',tag:'Jupiter · Airdrops · Jun 2025'},
+ {id:'8OYRlCLIayA',th:'8OYRlCLIayA_n01.jpg',tag:'Seb Montgomery · Arcium · May 2026'},
+ {id:'k0ZtXNgV-gg',th:'k0ZtXNgV-gg_n34.jpg',tag:'Jupiter · Airdrops · Jul 2025'},
+ {id:'PFPLTNyFOUw',th:'PFPLTNyFOUw_n00.jpg',tag:'Jupiter · Perps · May 2025'},
+ {id:'ZPReMS8bnlA',th:'ZPReMS8bnlA_n12.jpg',tag:'Seb Montgomery · Solana Seeker · Sep 2025'},
+ {id:'n568ZTSWRWg',th:'n568ZTSWRWg_n17.jpg',tag:'Jupiter · DCA strategy · May 2025'},
+ {id:'DCOgQzttsCk',th:'DCOgQzttsCk_n12.jpg',tag:'Jupiter · Self-custody · Jun 2025'},
+ {id:'DqZ8V2RSCcQ',th:'DqZ8V2RSCcQ_03.jpg',tag:'On Solana · Pitch · May 2026'},
+ {id:'5LS2WfFt78I',th:'5LS2WfFt78I_14.jpg',tag:'Jupiter · Memecoins · Jun 2025'},
+ {id:'9WiY0qWpnUU',th:'9WiY0qWpnUU_n14.jpg',tag:'Jupiter · Jupiverse event · Nov 2024'},
+ {id:'_CBKfzWiIVo',th:'_CBKfzWiIVo_n45.jpg',tag:'Seb Montgomery · Backpack · Feb 2026'},
+ {id:'TOfcZklZIKU',th:'TOfcZklZIKU_n37.jpg',tag:'Jupiter · Token verification · May 2025'},
+ {id:'U0ySjI4x7DM',th:'U0ySjI4x7DM_n20.jpg',tag:'Jupiter · Mobile app · Apr 2025'},
+ {id:'p-l3dja5GFs',th:'p-l3dja5GFs_05.jpg',tag:'On Solana · Product demo · May 2026'},
+ {id:'rrXsN7-9RNI',th:'rrXsN7-9RNI_n37.jpg',tag:'Jupiter · Memecoins / Murad · Oct 2024'},
+ {id:'th2x5Q5V6Ig',th:'th2x5Q5V6Ig_n15.jpg',tag:'Jupiter · Tokenized stocks · Jul 2025'}
+];
+// All animation + AI motion, one bucket (no AI / non-AI split).
+// Order spreads the non-ZINC pieces (trailer 3rd, Jupiter 6th) so ZINC is not one long block.
+const ANIMG=[
+ {src:'assets/videos/E59_LfnkCZE.mp4',poster:'assets/picks_anim/e59_00.jpg',tag:'ZINC · Official teaser · May 2026'},
+ {src:'assets/clips/ai1.mp4',poster:'assets/picks_anim/ai1_01.jpg',tag:'ZINC · AI animation · 2026'},
+ {src:'assets/clips/ai4.mp4',poster:'assets/picks_anim/ai4_04.jpg',tag:'ZINC · AI animation · 2026'},
+ {src:'assets/clips/ai3.mp4',poster:'assets/picks_anim/ai3_03.jpg',tag:'ZINC · AI animation · 2026'},
+ {src:'assets/clips/ai2.mp4',poster:'assets/picks_anim/ai2_02.jpg',tag:'ZINC · AI animation · 2026'},
+ {src:'assets/clips/animation.mp4',poster:'assets/picks_anim/animation_06.jpg',tag:'Jupiter · Verified, not extinct · Jun 2026'},
+ {src:'assets/clips/demonios.mp4',poster:'assets/picks_anim/demonios_02.jpg',tag:'Os Demónios do Meu Avô · Film trailer · 2022'}
+];
+// Logos are each team's X (Twitter) profile picture, stored locally in assets/clients/.
+// turbine.cash's old X account was renamed to @zinc_cash after the rebrand, so both point there.
+const CLIENTS=[
+ {n:'Seb Montgomery',f:'seb.jpg',x:'SebMontgomery'},
+ {n:'Jupiter',f:'jupiter.jpg',x:'JupiterExchange'},
+ {n:'Zinc',f:'zinc.jpg',x:'zinc_cash'},
+ {n:'UPROCK',f:'uprock.jpg',x:'UpRockCom'},
+ {n:'Zcash',f:'zcash.jpg',x:'zcash'},
+ {n:'turbine.cash',f:'turbine.jpg',x:'zinc_cash'},
+ {n:'Metadao',f:'metadao.jpg',x:'MetaDAOProject'},
+ {n:'validator.com',f:'validator.jpg',x:'validator_com'}
+];
+// av = generated NPC avatar (assets/comments/npc/). The commenters' real YouTube pfps
+// are kept in assets/comments/*.jpg if we ever want to swap back.
+const COMMENTS=[
+ {t:"This video's got some good editing and nice storytelling, Sebb 🤩",a:"solmoek3559",c:"Jupiter",av:"npc/npc01.jpg"},
+ {t:"Great video, thanks a lot. All concepts clearly and easily explained, great tone of voice, great pace. Technical but not too much. Looking out for the next one!",a:"gaiatrentino4692",c:"AI with Seb",av:"npc/npc02.jpg"},
+ {t:"Awesome video, long one, but I didn't get bored even for a sec.",a:"CryptoDeFi308",c:"Jupiter",av:"npc/npc03.jpg"},
+ {t:"Super interesting. The production quality was great.",a:"tradfi",c:"Jupiter",av:"npc/npc04.jpg"},
+ {t:"Wow, very cool!!!",a:"GFTrooper1",c:"Jupiter",av:"npc/npc05.jpg"},
+ {t:"Amazing video!!!",a:"STAS.99",c:"Jupiter",av:"npc/npc06.jpg"},
+ {t:"Great video ❤",a:"leonatsy",c:"Jupiter",av:"npc/npc07.jpg"},
+ {t:"Nice video ❤❤❤",a:"ramswroopsingh",c:"Jupiter",av:"npc/npc08.jpg"},
+ {t:"Amazing 🔥",a:"brunorovina",c:"Jupiter",av:"npc/npc09.jpg"},
+ {t:"I love this.",a:"KemexUmoh",c:"Jupiter",av:"npc/npc10.jpg"}
+];
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const go=id=>document.getElementById(id).scrollIntoView({block:'start'});
+document.getElementById('ctrack').innerHTML=(()=>{const one=CLIENTS.map(c=>`<a class="cl" href="https://x.com/${c.x}" target="_blank" rel="noopener"><img loading="lazy" src="assets/clients/${c.f}" alt="">${esc(c.n)}</a>`).join('');return one+one;})();
+
+const bar=document.querySelector('.bar');
+const onScroll=()=>bar.classList.toggle('scrolled',window.scrollY>window.innerHeight-80);
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+const modal=document.getElementById('modal');
+function openModal(html){modal.querySelector('.mbody').innerHTML=html;modal.classList.add('on');document.body.style.overflow='hidden';}
+function closeModal(){modal.classList.remove('on');modal.querySelector('.mbody').innerHTML='';document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+const YTCLEAN='controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&fs=0&playsinline=1&color=white';
+function openItem(it){
+ if(it.type==='yt') openModal(`<div class="mvid"><iframe src="https://www.youtube.com/embed/${it.id}?autoplay=1&loop=1&playlist=${it.id}&${YTCLEAN}" allow="autoplay; encrypted-media"></iframe></div>`);
+ else if(it.type==='clip') openModal(`<div class="mvid"><video src="${it.src}" autoplay loop playsinline></video></div>`);
+ else openModal(`<img class="mimg" src="${it.img}">`);
+}
+
+// Static thumbnail tiles. No autoplay on scroll. Hover lightens + reveals the tag. Click opens the clean player.
+function tileHTML(poster,tag){
+ return `<div class="th"><img loading="lazy" src="${poster}"><span class="lighten"></span><span class="pbtn">▶</span><span class="tag">${esc(tag)}</span></div>`;
+}
+// No holes: if the last row is short, reshape trailing tiles wider so the grid ends flush.
+// n%3==2 -> last 2 tiles wide (row of 2). n%3==1 -> last 4 tiles wide (two rows of 2).
+function fillLastRow(grid){
+ const t=[...grid.children]; const r=t.length%3;
+ if(r===2) t.slice(-2).forEach(el=>el.classList.add('wide'));
+ else if(r===1&&t.length>3) t.slice(-4).forEach(el=>el.classList.add('wide'));
+}
+const videoGrid=document.getElementById('videoGrid');
+videoGrid.innerHTML=VIDEOS.map(o=>`<button class="vtile">${tileHTML('assets/picks/'+o.th,o.tag)}</button>`).join('');
+fillLastRow(videoGrid);
+[...videoGrid.children].forEach((el,i)=>{ el.onclick=()=>openItem({type:'clip',src:'assets/videos/'+VIDEOS[i].id+'.mp4'}); });
+const animGrid=document.getElementById('animGrid');
+animGrid.innerHTML=ANIMG.map(o=>`<button class="vtile">${tileHTML(o.poster,o.tag)}</button>`).join('');
+fillLastRow(animGrid);
+[...animGrid.children].forEach((el,i)=>{ el.onclick=()=>openItem({type:'clip',src:ANIMG[i].src}); });
+
+// BRANDING (38 ZINC images grouped: X branding profiles / 16:9 IP world art / branded posts)
+const BRAND_A=[35,34];
+// Removed per Pedro (2026-07-16): IP 07,09,36,20,29,33 · posts 05,32,37,06
+const BRAND_B=[17,13,1,16,11,12,10,18,26,21,23,19,14,15,31,8];
+const BRAND_C=[2,22,24,28,38,25,3,27,4,30];
+function buildBrand(id,list){
+ const g=document.getElementById(id);
+ g.innerHTML=list.map(n=>{const nn=String(n).padStart(2,'0');return `<button class="bcell" data-nn="${nn}"><img loading="lazy" src="assets/branding/thumb/brand-${nn}.jpg"></button>`;}).join('');
+ g.querySelectorAll('.bcell').forEach(b=>b.onclick=()=>openModal(`<img class="mimg" src="assets/branding/large/brand-${b.dataset.nn}.jpg">`));
+}
+buildBrand('bgA',BRAND_A);buildBrand('bgB',BRAND_B);buildBrand('bgC',BRAND_C);
+fillLastRow(document.getElementById('bgB'));
+// 4-col grid no-holes: remainder 2 -> last 2 span 2; remainder 1 -> last 1 spans full row
+(function(){
+ const g=document.getElementById('bgC'); const t=[...g.children]; const r=t.length%4;
+ if(r===2) t.slice(-2).forEach(el=>el.classList.add('wide'));
+ else if(r===1) t[t.length-1].style.gridColumn='span 4';
+})();
+
+// comments
+document.getElementById('cgrid').innerHTML=COMMENTS.map(r=>`<div class="cmt"><div class="ct">“${esc(r.t)}”</div><div class="cf"><img class="cav" loading="lazy" src="assets/comments/${r.av}" alt=""><div><div class="cn">@${r.a}</div><div class="cc">${r.c}</div></div></div></div>`).join('');
+</script>
+</body>
+</html>
