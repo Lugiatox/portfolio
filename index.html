@@ -99,6 +99,9 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
 .yvn{font-size:13px;color:var(--sub);margin-top:8px;line-height:1.4}
 .yvn b{color:var(--ink);font-size:26px;font-weight:800;letter-spacing:-.02em}
 .crfoot{border-top:1px solid var(--line);padding:12px 0 4px;font-size:13.5px;font-weight:700}
+.yvb{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:7px}
+.yvb.notmine{background:var(--bg2);color:var(--sub);border:1px solid var(--line)}
+.yvb.mine{background:var(--ink);color:#fff}
 @media(max-width:700px){.crvids{grid-template-columns:1fr}}
 
 /* WORK + ANIMATION GRID (full-bleed, seamless: no gaps, no radius, no shadow) */
@@ -284,13 +287,21 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
       </div>
       <div class="cr">
         <div class="crh"><img src="assets/clients/jupiter.jpg" alt=""><div><div class="crn">Jupiter Exchange</div><div class="crs">Animation for Jupiter's X account · @JupiterExchange</div></div></div>
-        <div class="crvids one">
+        <div class="crvids">
+          <div class="yv"><img loading="lazy" src="assets/results/jupx_worldcup.jpg"><div>
+            <span class="yvb notmine">Not my video</span>
+            <div class="yvt">The $125,000 World Cup Challenge on Jupiter Predict</div>
+            <div class="yvd">Posted two days later · Jun 2026</div>
+            <div class="yvn"><b>45,206</b> views · 307 likes</div>
+          </div></div>
           <div class="yv"><img loading="lazy" src="assets/picks_anim/animation_06.jpg"><div>
+            <span class="yvb mine">My animation</span>
             <div class="yvt">Verified, Not Extinct: 2D animation for Jupiter's verification push</div>
             <div class="yvd">Posted on X · Jun 2026</div>
             <div class="yvn"><b>234,436</b> views · 590 likes</div>
           </div></div>
         </div>
+        <div class="crfoot">5x the views of the account's regular video posts.</div>
       </div>
     </div>
   </div></section>
@@ -377,9 +388,11 @@ const CLIENTS=[
 // are kept in assets/comments/*.jpg if we ever want to swap back.
 const COMMENTS=[
  {t:"This video's got some good editing and nice storytelling, Sebb 🤩",a:"solmoek3559",c:"Jupiter",av:"npc/npc01.jpg"},
+ {t:"sound on, this one is a banger!",a:"jup_VRFD",c:"Jupiter on X",av:"x_vrfd.jpg"},
  {t:"Great video, thanks a lot. All concepts clearly and easily explained, great tone of voice, great pace. Technical but not too much. Looking out for the next one!",a:"gaiatrentino4692",c:"AI with Seb",av:"npc/npc02.jpg"},
  {t:"Awesome video, long one, but I didn't get bored even for a sec.",a:"CryptoDeFi308",c:"Jupiter",av:"npc/npc03.jpg"},
  {t:"Super interesting. The production quality was great.",a:"tradfi",c:"Jupiter",av:"npc/npc04.jpg"},
+ {t:"my kids will grow up watching JupTV instead of cocomelon",a:"0xanmol",c:"Jupiter on X",av:"x_anmol.jpg"},
  {t:"Wow, very cool!!!",a:"GFTrooper1",c:"Jupiter",av:"npc/npc05.jpg"},
  {t:"Amazing video!!!",a:"STAS.99",c:"Jupiter",av:"npc/npc06.jpg"},
  {t:"Great video ❤",a:"leonatsy",c:"Jupiter",av:"npc/npc07.jpg"},
