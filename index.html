@@ -390,12 +390,12 @@ const VIDEOS=[
  {id:'rrXsN7-9RNI',th:'rrXsN7-9RNI_n37.jpg',tag:'Jupiter · Memecoins / Murad · Oct 2024'},
  {id:'th2x5Q5V6Ig',th:'th2x5Q5V6Ig_n15.jpg',tag:'Jupiter · Tokenized stocks · Jul 2025'},
  {id:'hobba',th:'hobba_03.jpg',tag:'Hobba · Borrow better · Jul 2026'},
- {id:'aitop6',th:'aitop6_02.jpg',tag:'AI with Seb · Top 6 AI models · Apr 2026'},
- {id:'investhodl',th:'investhodl_03.jpg',tag:'Trader Nation · Invest and HODL · Oct 2025'},
+ {id:'aitop6',th:'aitop6_05.jpg',tag:'AI with Seb · Top 6 AI models · Apr 2026'},
+ {id:'investhodl',th:'investhodl_04.jpg',tag:'Trader Nation · Invest and HODL · Oct 2025'},
  {id:'riskmgmt',th:'riskmgmt_03.jpg',tag:'Trader Nation · Risk management · Oct 2025'},
  {id:'psychology',th:'psychology_03.jpg',tag:'Trader Nation · Trading psychology · Oct 2025'},
- {id:'fogo',th:'fogo_03.jpg',tag:'Fogo · What excites about Fogo · Jan 2026'},
- {id:'kast',th:'kast_03.jpg',tag:'Kast · Ad · Jul 2026'}
+ {id:'fogo',th:'fogo_02.jpg',tag:'Fogo · What excites about Fogo · Jan 2026'},
+ {id:'kast',th:'kast_01.jpg',tag:'Kast · Ad · Jul 2026'}
 ];
 // All animation + AI motion, one bucket (no AI / non-AI split).
 // Rows of 3: ZINC row, ZINC+Jupiter row, the three wallet staking cards (on their brand
@@ -407,10 +407,10 @@ const ANIMG=[
  {src:'assets/clips/ai3.mp4',poster:'assets/picks_anim/ai3_03.jpg',tag:'ZINC · AI animation · 2026'},
  {src:'assets/clips/ai2.mp4',poster:'assets/picks_anim/ai2_02.jpg',tag:'ZINC · AI animation · 2026'},
  {src:'assets/clips/animation.mp4',poster:'assets/picks_anim/animation_06.jpg',tag:'Jupiter · Verified, not extinct · Jun 2026'},
- {src:'assets/clips/backpackcard.mp4',poster:'assets/clips/backpackcard.jpg',tag:'Backpack · Staking card animation · 2026'},
- {src:'assets/clips/phantomcard.mp4',poster:'assets/clips/phantomcard.jpg',tag:'Phantom · Staking card animation · 2026'},
- {src:'assets/clips/solflarecard.mp4',poster:'assets/clips/solflarecard.jpg',tag:'Solflare · Staking card animation · 2026'},
- {src:'assets/clips/mertman.mp4',poster:'assets/clips/mertman.jpg',tag:'Animation · Mertman · Dec 2025'},
+ {src:'assets/clips/backpackcard.mp4',poster:'assets/picks/backpackcard_01.jpg',tag:'Backpack · Staking card animation · 2026'},
+ {src:'assets/clips/phantomcard.mp4',poster:'assets/picks/phantomcard_01.jpg',tag:'Phantom · Staking card animation · 2026'},
+ {src:'assets/clips/solflarecard.mp4',poster:'assets/picks/solflarecard_01.jpg',tag:'Solflare · Staking card animation · 2026'},
+ {src:'assets/clips/mertman.mp4',poster:'assets/clips/mertman.jpg',tag:'Zcash · Mertman · Dec 2025'},
  {src:'assets/clips/demonios.mp4',poster:'assets/picks_anim/demonios_02.jpg',tag:'Os Demónios do Meu Avô · Film trailer · 2022'}
 ];
 // Logos are each team's X (Twitter) profile picture, stored locally in assets/clients/.
@@ -546,7 +546,7 @@ function openBrand(id){
 // (X profile; YouTube channel for AI with Seb; Seb Montgomery has none), then logos + colours.
 // Branded posts hold the square posts / the Seb-on-screen posts, plus real videos where relevant. ar = w/h.
 const BRANDKITS=[
- {slug:'validator',name:'validator.com',cover:'assets/branding/validator/large/06.jpg',sections:[
+ {slug:'validator',name:'validator.com',cover:'assets/branding/validator/large/04.jpg',sections:[
   {title:'01 · Brand building',items:[{n:'06',ar:0.991},{n:'01',ar:6.394},{n:'02',ar:2.295}]},
   {title:'02 · Brand boards',items:[{n:'05',ar:1.777},{n:'03',ar:1.777}]},
   {title:'03 · Branded posts',items:[{n:'07',ar:1}]}
@@ -556,11 +556,11 @@ const BRANDKITS=[
   {title:'02 · Brand boards',items:[{n:'03',ar:1.5},{n:'04',ar:1.758}]},
   {title:'03 · Branded posts',items:[{n:'06',ar:1},{n:'07',ar:1}]}
  ]},
- {slug:'trader',name:'Trader Nation',cover:'assets/branding/trader/large/04.jpg',sections:[
+ {slug:'trader',name:'Trader Nation',cover:'assets/branding/trader/large/03.jpg',sections:[
   {title:'01 · Brand building',items:[{n:'04',ar:0.928},{n:'01',ar:6.394},{n:'02',ar:2.295}]},
   {title:'02 · Brand boards',items:[{n:'03',ar:1.778}]},
   {title:'03 · Branded posts',items:[{n:'05',ar:1},
-   {video:'assets/videos/investhodl.mp4',thumb:'assets/picks/investhodl_03.jpg',ar:1.778},
+   {video:'assets/videos/investhodl.mp4',thumb:'assets/picks/investhodl_04.jpg',ar:1.778},
    {video:'assets/videos/riskmgmt.mp4',thumb:'assets/picks/riskmgmt_03.jpg',ar:1.778},
    {video:'assets/videos/psychology.mp4',thumb:'assets/picks/psychology_03.jpg',ar:1.778}]}
  ]},
@@ -575,7 +575,7 @@ const BRANDKITS=[
   {title:'01 · Brand building',items:[{n:'06',ar:2.505},{n:'01',ar:6.394},{n:'02',ar:2.295}]},
   {title:'02 · Brand boards',items:[{n:'05',ar:1.727},{n:'03',ar:1.729}]},
   {title:'03 · Branded posts',items:[{n:'04',ar:1.729},
-   {video:'assets/videos/aitop6.mp4',thumb:'assets/picks/aitop6_02.jpg',ar:1.778}]}
+   {video:'assets/videos/aitop6.mp4',thumb:'assets/picks/aitop6_05.jpg',ar:1.778}]}
  ]}
 ];
 const BRANDBTNS=[{panel:'brand-zinc',name:'ZINC',hint:'Full brand identity',cover:'assets/branding/large/brand-17.jpg'}];
