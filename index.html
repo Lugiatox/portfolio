@@ -131,31 +131,32 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
  .vtile .tag{opacity:1;transform:none}
 }
 
-/* BRAND BUTTONS (one per brand, cover art like the video gallery) */
-.brandbtns{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
-.brandbtn{position:relative;display:block;width:100%;padding:0;border:0;border-radius:14px;overflow:hidden;background:#0a0a0a;cursor:pointer;text-align:left;font:inherit;box-shadow:0 16px 40px -26px rgba(0,0,0,.5);transition:transform .18s}
-.brandbtn .bb-cover{aspect-ratio:16/10;overflow:hidden}
+/* BRAND / 3D PROJECT BUTTONS (full-bleed seamless, same idea as the video gallery) */
+.brandbtns{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:36px}
+.brandbtn{grid-column:span 2;position:relative;display:block;width:100%;padding:0;border:0;overflow:hidden;background:#0a0a0a;cursor:pointer;text-align:left;font:inherit}
+.brandbtn.wide{grid-column:span 3}
+.brandbtn .bb-cover{aspect-ratio:16/9;overflow:hidden}
 .brandbtn img{width:100%;height:100%;object-fit:cover;transition:transform .45s cubic-bezier(.2,.6,.2,1)}
-.brandbtn:hover{transform:translateY(-3px)}
 .brandbtn:hover img{transform:scale(1.05)}
-.bb-meta{position:absolute;left:0;right:0;bottom:0;padding:32px 18px 15px;background:linear-gradient(to top,rgba(6,6,8,.86),rgba(6,6,8,0));color:#fff;display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
-.bb-name{font-weight:800;font-size:21px;letter-spacing:-.01em}
+.brandbtn .lighten{position:absolute;inset:0;background:#fff;opacity:0;transition:opacity .25s;pointer-events:none}
+.brandbtn:hover .lighten{opacity:.14}
+.bb-meta{position:absolute;left:0;right:0;bottom:0;padding:32px 18px 14px;background:linear-gradient(to top,rgba(6,6,8,.86),rgba(6,6,8,0));color:#fff;display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
+.bb-name{font-weight:800;font-size:20px;letter-spacing:-.01em}
 .bb-hint{font-size:12px;opacity:.85;padding-bottom:3px;white-space:nowrap}
-.brandbtn.active{outline:2.5px solid var(--ink);outline-offset:3px}
+.brandbtn.active{outline:3px solid #fff;outline-offset:-3px}
 .brandbtn.active .bb-hint::after{content:" (open)"}
+/* justified galleries inside panels: every row flush, aspect preserved, no gaps or corners */
+.jrow{display:flex;width:100%}
+.jcell{position:relative;display:block;padding:0;border:0;background:#0a0a0a;cursor:zoom-in;overflow:hidden}
+.jcell img{width:100%;display:block;object-fit:cover}
+.jcell .jplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:18px;padding-left:3px;pointer-events:none}
 .brandpanel[hidden]{display:none}
 .bpanhead{max-width:1560px;margin:0 auto;padding:6px 20px 0;display:flex;align-items:center;justify-content:space-between;gap:14px}
 .bpanhead span{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sub)}
 .bclose{border:1px solid var(--line);background:var(--bg);border-radius:100px;padding:8px 16px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;transition:.15s}
 .bclose:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-/* brand-kit board deck (natural aspect, click to enlarge) */
-.bdeck{column-count:2;column-gap:10px;max-width:1400px;margin:0 auto;padding:0 20px}
-.bdcell{display:block;width:100%;border:0;padding:0;margin:0 0 10px;background:var(--bg2);border-radius:10px;overflow:hidden;cursor:zoom-in;break-inside:avoid}
-.bdcell img{width:100%;display:block;transition:transform .3s}
-.bdcell:hover img{transform:scale(1.02)}
-@media(max-width:760px){.brandbtns{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:720px){.bdeck{column-count:1}}
-@media(max-width:480px){.brandbtns{grid-template-columns:1fr}}
+@media(max-width:900px){.brandbtn,.brandbtn.wide{grid-column:span 3}}
+@media(max-width:560px){.brandbtn,.brandbtn.wide{grid-column:span 6}}
 
 /* BRANDING GALLERIES (full-bleed, seamless, grouped) */
 .bhead{padding:30px 20px 12px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sub)}
@@ -209,7 +210,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
 
 <header class="bar"><div class="row">
   <a href="#top" class="logo">Pedro</a>
-  <nav class="menu"><a href="#work">Work</a><a href="#animations">Animation</a><a href="#branding">Branding</a><a href="#contact" class="talk">Let's talk</a></nav>
+  <nav class="menu"><a href="#work">Work</a><a href="#animations">Animation</a><a href="#branding">Branding</a><a href="#threed">3D</a><a href="#contact" class="talk">Let's talk</a></nav>
 </div></header>
 
 <main id="top">
@@ -328,7 +329,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
             <div class="yvn"><b>45,206</b> views · 307 likes</div>
           </div></div>
           <div class="yv"><img loading="lazy" src="assets/picks_anim/animation_06.jpg"><div>
-            <span class="yvb mine">My animation</span>
+            <span class="yvb mine">My video</span>
             <div class="yvt">Verified, Not Extinct: 2D animation for Jupiter's verification push</div>
             <div class="yvd">Posted on X · Jun 2026</div>
             <div class="yvn"><b>234,436</b> views · 590 likes</div>
@@ -346,8 +347,9 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
       <h2 class="secttl">I not only edit, I also build brands.</h2>
       <p class="sectp">Not just video. I build brand identities too. Pick a brand to open its full kit: logos, colour, type, world art and posts.</p>
     </div>
-    <div class="brandbtns" id="brandbtns"></div>
-  </div></section>
+  </div>
+  <div class="brandbtns" id="brandbtns"></div>
+  </section>
   <section class="chan brandpanel" id="brand-zinc" hidden style="padding-top:0">
     <div class="bpanhead"><span>ZINC · full brand identity (zinc.cash)</span><button class="bclose" onclick="closeBrand()">Close ✕</button></div>
     <div class="bhead">01 · X branding</div>
@@ -358,6 +360,17 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
     <div class="bgrid4" id="bgC"></div>
   </section>
   <div id="brandpanels"></div>
+
+  <!-- 3D WORK: pick a project to open its renders and turntables -->
+  <section class="textsec" id="threed" style="padding-bottom:20px">
+    <div class="wrap"><div class="lead-block">
+      <span class="eyebrow">3D</span>
+      <h2 class="secttl">Modelled, rigged and rendered by me.</h2>
+      <p class="sectp">Personal 3D work from my animation degree and beyond. Pick a project to open its renders and turntables.</p>
+    </div></div>
+    <div class="brandbtns" id="threedbtns"></div>
+  </section>
+  <div id="threedpanels"></div>
 
   <!-- COMMENTS (right-to-left marquee of window cards) -->
   <section class="chan" id="comments"><div class="cmarq"><div class="ctrack2" id="ctrack2"></div></div></section>
@@ -395,7 +408,8 @@ const VIDEOS=[
  {id:'U0ySjI4x7DM',th:'U0ySjI4x7DM_n20.jpg',tag:'Jupiter · Mobile app · Apr 2025'},
  {id:'p-l3dja5GFs',th:'p-l3dja5GFs_05.jpg',tag:'On Solana · Product demo · May 2026'},
  {id:'rrXsN7-9RNI',th:'rrXsN7-9RNI_n37.jpg',tag:'Jupiter · Memecoins / Murad · Oct 2024'},
- {id:'th2x5Q5V6Ig',th:'th2x5Q5V6Ig_n15.jpg',tag:'Jupiter · Tokenized stocks · Jul 2025'}
+ {id:'th2x5Q5V6Ig',th:'th2x5Q5V6Ig_n15.jpg',tag:'Jupiter · Tokenized stocks · Jul 2025'},
+ {id:'hobba',th:'hobba_03.jpg',tag:'Hobba · Borrow better · Jul 2026'}
 ];
 // All animation + AI motion, one bucket (no AI / non-AI split).
 // Order spreads the non-ZINC pieces (trailer 3rd, Jupiter 6th) so ZINC is not one long block.
@@ -496,38 +510,124 @@ fillLastRow(document.getElementById('bgB'));
  else if(r===1) t[t.length-1].style.gridColumn='span 4';
 })();
 
-// Every brand as a cover button. ZINC has the bespoke 3-gallery panel above; the rest render a board deck.
-const BRANDS=[
- {slug:'zinc',     name:'ZINC',          hint:'Full brand identity', cover:'assets/branding/large/brand-17.jpg', bespoke:true},
- {slug:'validator',name:'validator.com', hint:'Brand kit', cover:'assets/branding/validator/large/06.jpg', n:7},
- {slug:'fogees',   name:'Fogees Hub',    hint:'Brand kit', cover:'assets/branding/fogees/large/03.jpg',    n:7},
- {slug:'trader',   name:'Trader Nation', hint:'Brand kit', cover:'assets/branding/trader/large/04.jpg',    n:5},
- {slug:'seb',      name:'Seb Montgomery',hint:'Brand kit', cover:'assets/branding/seb/large/03.jpg',       n:9},
- {slug:'aiseb',    name:'AI with Seb',   hint:'Brand kit', cover:'assets/branding/aiseb/large/02.jpg',     n:5}
-];
-document.getElementById('brandbtns').innerHTML=BRANDS.map(b=>
- `<button class="brandbtn" data-panel="brand-${b.slug}" aria-expanded="false"><div class="bb-cover"><img src="${b.cover}" alt="${esc(b.name)} brand art"></div><div class="bb-meta"><span class="bb-name">${esc(b.name)}</span><span class="bb-hint">${esc(b.hint)} →</span></div></button>`).join('');
-document.getElementById('brandpanels').innerHTML=BRANDS.filter(b=>!b.bespoke).map(b=>{
- const cells=Array.from({length:b.n},(_,i)=>{const nn=String(i+1).padStart(2,'0');return `<button class="bdcell" data-full="assets/branding/${b.slug}/large/${nn}.jpg"><img data-src="assets/branding/${b.slug}/thumb/${nn}.jpg" alt=""></button>`;}).join('');
- return `<section class="chan brandpanel" id="brand-${b.slug}" hidden style="padding-top:0"><div class="bpanhead"><span>${esc(b.name)} · brand kit</span><button class="bclose" onclick="closeBrand()">Close ✕</button></div><div class="bdeck">${cells}</div></section>`;
-}).join('');
-document.querySelectorAll('.bdcell').forEach(b=>b.onclick=()=>openModal(`<img class="mimg" src="${b.dataset.full}">`));
+// Justified gallery: rows of mixed-aspect images, every row flush to both edges (last row scales up).
+function justify(el,items){
+ const W=document.documentElement.clientWidth;
+ const target=W>900?300:220;
+ const rows=[];let row=[],sum=0;
+ for(const it of items){row.push(it);sum+=it.ar;if(sum*target>=W){rows.push(row);row=[];sum=0;}}
+ if(row.length)rows.push(row);
+ el.innerHTML=rows.map(r=>{
+  const s=r.reduce((a,b)=>a+b.ar,0);
+  return '<div class="jrow">'+r.map(it=>`<button class="jcell" data-full="${it.full}"${it.video?` data-video="${it.video}"`:''} style="width:${(it.ar/s*100).toFixed(3)}%"><img loading="lazy" src="${it.thumb}" style="aspect-ratio:${it.ar.toFixed(4)}">${it.video?'<span class="jplay">▶</span>':''}</button>`).join('')+'</div>';
+ }).join('');
+ el.querySelectorAll('.jcell').forEach(b=>b.onclick=()=>{
+  if(b.dataset.video) openModal(`<div class="mvid"><video src="${b.dataset.video}" autoplay loop playsinline></video></div>`);
+  else openModal(`<img class="mimg" src="${b.dataset.full}">`);
+ });
+}
 
-// Brand buttons: click one to reveal its panel; its images load on first open.
-function closeBrand(){
+// Cover buttons + collapsible panels (shared by Branding and 3D). Panel content builds on first open.
+const panelBuilders={};
+function coverButtons(containerId,list){
+ const c=document.getElementById(containerId);
+ c.innerHTML=list.map(b=>`<button class="brandbtn" data-panel="${b.panel}" aria-expanded="false"><div class="bb-cover"><img loading="lazy" src="${b.cover}" alt="${esc(b.name)}"></div><span class="lighten"></span><div class="bb-meta"><span class="bb-name">${esc(b.name)}</span><span class="bb-hint">${esc(b.hint)} →</span></div></button>`).join('');
+ fillLastRow(c);
+ c.querySelectorAll('.brandbtn').forEach(b=>b.onclick=()=>{ b.classList.contains('active')?closeBrand(b.dataset.home):openBrand(b.dataset.panel); });
+}
+function closeBrand(homeId){
  document.querySelectorAll('.brandbtn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-expanded','false');});
  document.querySelectorAll('.brandpanel').forEach(p=>p.hidden=true);
- document.getElementById('branding').scrollIntoView({behavior:'smooth',block:'start'});
+ document.getElementById(homeId||'branding').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function openBrand(id){
  document.querySelectorAll('.brandbtn').forEach(b=>{const on=b.dataset.panel===id;b.classList.toggle('active',on);b.setAttribute('aria-expanded',on);});
  document.querySelectorAll('.brandpanel').forEach(p=>p.hidden=(p.id!==id));
  const p=document.getElementById(id); if(!p)return;
  p.hidden=false;
+ if(panelBuilders[id]){panelBuilders[id]();delete panelBuilders[id];}
  p.querySelectorAll('img[data-src]').forEach(im=>{im.src=im.dataset.src;im.removeAttribute('data-src');});
  p.scrollIntoView({behavior:'smooth',block:'start'});
 }
-document.querySelectorAll('.brandbtn').forEach(b=>b.onclick=()=>{ b.classList.contains('active')?closeBrand():openBrand(b.dataset.panel); });
+
+// BRANDKITS: sections per brand (01 Brand building = logos/colours/social mockup, 02 boards). ar = w/h.
+// AI with Seb's social mockup is a YouTube channel (06); the others use X profiles. Seb Montgomery has no social mockup.
+const BRANDKITS=[
+ {slug:'validator',name:'validator.com',cover:'assets/branding/validator/large/06.jpg',sections:[
+  {title:'01 · Brand building',items:[{n:'01',ar:6.394},{n:'02',ar:2.295},{n:'06',ar:0.991}]},
+  {title:'02 · Brand boards',items:[{n:'05',ar:1.777},{n:'03',ar:1.777},{n:'04',ar:1.777},{n:'07',ar:1}]}
+ ]},
+ {slug:'fogees',name:'Fogees Hub',cover:'assets/branding/fogees/large/03.jpg',sections:[
+  {title:'01 · Brand building',items:[{n:'01',ar:6.376},{n:'02',ar:2.295},{n:'05',ar:0.991}]},
+  {title:'02 · Brand boards',items:[{n:'03',ar:1.5},{n:'04',ar:1.758},{n:'06',ar:1},{n:'07',ar:1}]}
+ ]},
+ {slug:'trader',name:'Trader Nation',cover:'assets/branding/trader/large/04.jpg',sections:[
+  {title:'01 · Brand building',items:[{n:'01',ar:6.394},{n:'02',ar:2.295},{n:'04',ar:0.928}]},
+  {title:'02 · Brand boards',items:[{n:'03',ar:1.778},{n:'05',ar:1}]}
+ ]},
+ {slug:'seb',name:'Seb Montgomery',cover:'assets/branding/seb/large/03.jpg',sections:[
+  {title:'01 · Brand building',items:[{n:'01',ar:6.394},{n:'02',ar:2.295}]},
+  {title:'02 · Brand boards',items:[{n:'08',ar:1.777},{n:'09',ar:1.777},{n:'03',ar:1.777},{n:'04',ar:1.777},{n:'05',ar:1.777},{n:'06',ar:1.777},{n:'07',ar:1.777}]}
+ ]},
+ {slug:'aiseb',name:'AI with Seb',cover:'assets/branding/aiseb/large/03.jpg',sections:[
+  {title:'01 · Brand building',items:[{n:'01',ar:6.394},{n:'02',ar:2.295},{n:'06',ar:2.505}]},
+  {title:'02 · Brand boards',items:[{n:'04',ar:1.729},{n:'05',ar:1.727},{n:'03',ar:1.729}]}
+ ]}
+];
+const BRANDBTNS=[{panel:'brand-zinc',name:'ZINC',hint:'Full brand identity',cover:'assets/branding/large/brand-17.jpg'}];
+function buildKitPanels(){
+ document.getElementById('brandpanels').innerHTML=BRANDKITS.map(k=>
+  `<section class="chan brandpanel" id="brand-${k.slug}" hidden style="padding-top:0"><div class="bpanhead"><span>${esc(k.name)} · brand kit</span><button class="bclose" onclick="closeBrand()">Close ✕</button></div>`+
+  k.sections.map((s,i)=>`<div class="bhead">${s.title}</div><div class="jgal" id="jg-${k.slug}-${i}"></div>`).join('')+`</section>`).join('');
+ BRANDKITS.forEach(k=>{
+  BRANDBTNS.push({panel:'brand-'+k.slug,name:k.name,hint:'Brand kit',cover:k.cover});
+  panelBuilders['brand-'+k.slug]=()=>k.sections.forEach((s,i)=>justify(document.getElementById(`jg-${k.slug}-${i}`),s.items.map(n=>({full:`assets/branding/${k.slug}/large/${n.n}.jpg`,thumb:`assets/branding/${k.slug}/thumb/${n.n}.jpg`,ar:n.ar}))));
+ });
+}
+// THREED: 3D projects, one justified gallery each (renders + turntable/animation videos).
+const THREED=[
+ {key:'car',name:"70's Dodge Charger",cover:'assets/threed/car/large/01.jpg',items:[
+  {full:'assets/threed/car/large/01.jpg',thumb:'assets/threed/car/thumb/01.jpg',ar:1.778},
+  {full:'assets/threed/car/large/02.jpg',thumb:'assets/threed/car/thumb/02.jpg',ar:1.778},
+  {full:'assets/threed/car/large/03.jpg',thumb:'assets/threed/car/thumb/03.jpg',ar:1.778},
+  {full:'assets/threed/car/v01.mp4',thumb:'assets/threed/car/v01.jpg',ar:1.778,video:'assets/threed/car/v01.mp4'},
+  {full:'assets/threed/car/large/04.jpg',thumb:'assets/threed/car/thumb/04.jpg',ar:1.778},
+  {full:'assets/threed/car/large/05.jpg',thumb:'assets/threed/car/thumb/05.jpg',ar:1.778},
+  {full:'assets/threed/car/large/06.jpg',thumb:'assets/threed/car/thumb/06.jpg',ar:1.778}
+ ]},
+ {key:'whaleship',name:'The Whale Ship',cover:'assets/threed/whaleship/large/01.jpg',items:[
+  {full:'assets/threed/whaleship/large/01.jpg',thumb:'assets/threed/whaleship/thumb/01.jpg',ar:1.778},
+  {full:'assets/threed/whaleship/large/02.jpg',thumb:'assets/threed/whaleship/thumb/02.jpg',ar:1.778},
+  {full:'assets/threed/whaleship/v01.mp4',thumb:'assets/threed/whaleship/v01.jpg',ar:1.778,video:'assets/threed/whaleship/v01.mp4'},
+  {full:'assets/threed/whaleship/v02.mp4',thumb:'assets/threed/whaleship/v02.jpg',ar:1.778,video:'assets/threed/whaleship/v02.mp4'}
+ ]},
+ {key:'house',name:'The House',cover:'assets/threed/house/large/01.jpg',items:[
+  {full:'assets/threed/house/large/01.jpg',thumb:'assets/threed/house/thumb/01.jpg',ar:1.778},
+  {full:'assets/threed/house/large/02.jpg',thumb:'assets/threed/house/thumb/02.jpg',ar:1.778},
+  {full:'assets/threed/house/v01.mp4',thumb:'assets/threed/house/v01.jpg',ar:1.778,video:'assets/threed/house/v01.mp4'},
+  {full:'assets/threed/house/large/03.jpg',thumb:'assets/threed/house/thumb/03.jpg',ar:1.778},
+  {full:'assets/threed/house/large/04.jpg',thumb:'assets/threed/house/thumb/04.jpg',ar:1.778}
+ ]},
+ {key:'character',name:'Pedro Pereira · Character',cover:'assets/threed/character/large/01.jpg',items:[
+  {full:'assets/threed/character/large/01.jpg',thumb:'assets/threed/character/thumb/01.jpg',ar:1},
+  {full:'assets/threed/character/v01.mp4',thumb:'assets/threed/character/v01.jpg',ar:1,video:'assets/threed/character/v01.mp4'}
+ ]},
+ {key:'ladytemps',name:'Lady Temps',cover:'assets/threed/ladytemps/large/01.jpg',items:[
+  {full:'assets/threed/ladytemps/large/01.jpg',thumb:'assets/threed/ladytemps/thumb/01.jpg',ar:1.778},
+  {full:'assets/threed/ladytemps/v01.mp4',thumb:'assets/threed/ladytemps/v01.jpg',ar:1.778,video:'assets/threed/ladytemps/v01.mp4'},
+  {full:'assets/threed/ladytemps/v02.mp4',thumb:'assets/threed/ladytemps/v02.jpg',ar:1.778,video:'assets/threed/ladytemps/v02.mp4'}
+ ]}
+];
+function buildThreed(){
+ document.getElementById('threedpanels').innerHTML=THREED.map(w=>
+  `<section class="chan brandpanel" id="threed-${w.key}" hidden style="padding-top:0"><div class="bpanhead"><span>${esc(w.name)} · 3D project</span><button class="bclose" onclick="closeBrand('threed')">Close ✕</button></div><div class="jgal" id="jg3-${w.key}"></div></section>`).join('');
+ THREED.forEach(w=>{ panelBuilders['threed-'+w.key]=()=>justify(document.getElementById('jg3-'+w.key),w.items); });
+ coverButtons('threedbtns',THREED.map(w=>({panel:'threed-'+w.key,name:w.name,hint:'3D project',cover:w.cover,home:'threed'})));
+ document.querySelectorAll('#threedbtns .brandbtn').forEach(b=>b.dataset.home='threed');
+}
+buildKitPanels();
+buildThreed();
+coverButtons('brandbtns',BRANDBTNS);
 
 // comments
 // duplicated (one+one) so the right-to-left loop is seamless, like the clients strip
