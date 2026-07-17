@@ -390,10 +390,16 @@ const VIDEOS=[
  {id:'rrXsN7-9RNI',th:'rrXsN7-9RNI_n37.jpg',tag:'Jupiter · Memecoins / Murad · Oct 2024'},
  {id:'th2x5Q5V6Ig',th:'th2x5Q5V6Ig_n15.jpg',tag:'Jupiter · Tokenized stocks · Jul 2025'},
  {id:'hobba',th:'hobba_03.jpg',tag:'Hobba · Borrow better · Jul 2026'},
- {id:'aitop6',th:'aitop6_02.jpg',tag:'AI with Seb · Top 6 AI models · Apr 2026'}
+ {id:'aitop6',th:'aitop6_02.jpg',tag:'AI with Seb · Top 6 AI models · Apr 2026'},
+ {id:'investhodl',th:'investhodl_03.jpg',tag:'Trader Nation · Invest and HODL · Oct 2025'},
+ {id:'riskmgmt',th:'riskmgmt_03.jpg',tag:'Trader Nation · Risk management · Oct 2025'},
+ {id:'psychology',th:'psychology_03.jpg',tag:'Trader Nation · Trading psychology · Oct 2025'},
+ {id:'fogo',th:'fogo_03.jpg',tag:'Fogo · What excites about Fogo · Jan 2026'},
+ {id:'kast',th:'kast_03.jpg',tag:'Kast · Ad · Jul 2026'}
 ];
 // All animation + AI motion, one bucket (no AI / non-AI split).
-// Order spreads the non-ZINC pieces (trailer 3rd, Jupiter 6th) so ZINC is not one long block.
+// Rows of 3: ZINC row, ZINC+Jupiter row, the three wallet staking cards (on their brand
+// gradients), then the two wide tiles. 11 items -> last 2 wide.
 const ANIMG=[
  {src:'assets/videos/E59_LfnkCZE.mp4',poster:'assets/picks_anim/e59_00.jpg',tag:'ZINC · Official teaser · May 2026'},
  {src:'assets/clips/ai1.mp4',poster:'assets/picks_anim/ai1_01.jpg',tag:'ZINC · AI animation · 2026'},
@@ -401,6 +407,10 @@ const ANIMG=[
  {src:'assets/clips/ai3.mp4',poster:'assets/picks_anim/ai3_03.jpg',tag:'ZINC · AI animation · 2026'},
  {src:'assets/clips/ai2.mp4',poster:'assets/picks_anim/ai2_02.jpg',tag:'ZINC · AI animation · 2026'},
  {src:'assets/clips/animation.mp4',poster:'assets/picks_anim/animation_06.jpg',tag:'Jupiter · Verified, not extinct · Jun 2026'},
+ {src:'assets/clips/backpackcard.mp4',poster:'assets/clips/backpackcard.jpg',tag:'Backpack · Staking card animation · 2026'},
+ {src:'assets/clips/phantomcard.mp4',poster:'assets/clips/phantomcard.jpg',tag:'Phantom · Staking card animation · 2026'},
+ {src:'assets/clips/solflarecard.mp4',poster:'assets/clips/solflarecard.jpg',tag:'Solflare · Staking card animation · 2026'},
+ {src:'assets/clips/mertman.mp4',poster:'assets/clips/mertman.jpg',tag:'Animation · Mertman · Dec 2025'},
  {src:'assets/clips/demonios.mp4',poster:'assets/picks_anim/demonios_02.jpg',tag:'Os Demónios do Meu Avô · Film trailer · 2022'}
 ];
 // Logos are each team's X (Twitter) profile picture, stored locally in assets/clients/.
@@ -549,7 +559,10 @@ const BRANDKITS=[
  {slug:'trader',name:'Trader Nation',cover:'assets/branding/trader/large/04.jpg',sections:[
   {title:'01 · Brand building',items:[{n:'04',ar:0.928},{n:'01',ar:6.394},{n:'02',ar:2.295}]},
   {title:'02 · Brand boards',items:[{n:'03',ar:1.778}]},
-  {title:'03 · Branded posts',items:[{n:'05',ar:1}]}
+  {title:'03 · Branded posts',items:[{n:'05',ar:1},
+   {video:'assets/videos/investhodl.mp4',thumb:'assets/picks/investhodl_03.jpg',ar:1.778},
+   {video:'assets/videos/riskmgmt.mp4',thumb:'assets/picks/riskmgmt_03.jpg',ar:1.778},
+   {video:'assets/videos/psychology.mp4',thumb:'assets/picks/psychology_03.jpg',ar:1.778}]}
  ]},
  {slug:'seb',name:'Seb Montgomery',cover:'assets/branding/seb/large/03.jpg',sections:[
   {title:'01 · Brand building',items:[{n:'01',ar:6.394},{n:'02',ar:2.295}]},
