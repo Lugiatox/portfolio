@@ -371,46 +371,47 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
 // Every video, one grid. th = chosen in-video screenshot; tag = channel · subject · date (hover only).
 // Order deliberately interleaves channels (2 Jupiter, 1 other) so the colour is spread through the wall
 // instead of a solid block of Jupiter, and never puts two non-Jupiter tiles side by side.
+// 12 Jupiter + 12 other channels = strict alternation, so no channel ever appears twice in a row.
 const VIDEOS=[
  {id:'QB5pY5L-tJ8',th:'QB5pY5L-tJ8_06.jpg',tag:'Jupiter · Intro · Mar 2025'},
+ {id:'ZPReMS8bnlA',th:'ZPReMS8bnlA_n12.jpg',tag:'Seb Montgomery · Solana Seeker · Sep 2025'},
  {id:'h20EDsawRR4',th:'h20EDsawRR4_n17.jpg',tag:'Jupiter · Airdrops · Jun 2025'},
+ {id:'investhodl',th:'investhodl_04.jpg',tag:'Trader Nation · Invest and HODL · Oct 2025'},
+ {id:'PFPLTNyFOUw',th:'PFPLTNyFOUw_n00.jpg',tag:'Jupiter · Perps · May 2025'},
  {id:'8OYRlCLIayA',th:'8OYRlCLIayA_n01.jpg',tag:'Seb Montgomery · Arcium · May 2026'},
  {id:'k0ZtXNgV-gg',th:'k0ZtXNgV-gg_n34.jpg',tag:'Jupiter · Airdrops · Jul 2025'},
- {id:'PFPLTNyFOUw',th:'PFPLTNyFOUw_n00.jpg',tag:'Jupiter · Perps · May 2025'},
- {id:'ZPReMS8bnlA',th:'ZPReMS8bnlA_n12.jpg',tag:'Seb Montgomery · Solana Seeker · Sep 2025'},
+ {id:'hobba',th:'hobba_11.jpg',tag:'Hobba · Borrow better · Jul 2026'},
  {id:'n568ZTSWRWg',th:'n568ZTSWRWg_n17.jpg',tag:'Jupiter · DCA strategy · May 2025'},
- {id:'DCOgQzttsCk',th:'DCOgQzttsCk_n12.jpg',tag:'Jupiter · Self-custody · Jun 2025'},
  {id:'DqZ8V2RSCcQ',th:'DqZ8V2RSCcQ_03.jpg',tag:'On Solana · Pitch · May 2026'},
+ {id:'DCOgQzttsCk',th:'DCOgQzttsCk_n12.jpg',tag:'Jupiter · Self-custody · Jun 2025'},
+ {id:'riskmgmt',th:'riskmgmt_06.jpg',tag:'Trader Nation · Risk management · Oct 2025'},
  {id:'5LS2WfFt78I',th:'5LS2WfFt78I_14.jpg',tag:'Jupiter · Memecoins · Jun 2025'},
+ {id:'fogo',th:'fogo_02.jpg',tag:'Fogo · What excites about Fogo · Jan 2026'},
  {id:'9WiY0qWpnUU',th:'9WiY0qWpnUU_n14.jpg',tag:'Jupiter · Jupiverse event · Nov 2024'},
  {id:'_CBKfzWiIVo',th:'_CBKfzWiIVo_n45.jpg',tag:'Seb Montgomery · Backpack · Feb 2026'},
  {id:'TOfcZklZIKU',th:'TOfcZklZIKU_n37.jpg',tag:'Jupiter · Token verification · May 2025'},
- {id:'U0ySjI4x7DM',th:'U0ySjI4x7DM_n20.jpg',tag:'Jupiter · Mobile app · Apr 2025'},
- {id:'p-l3dja5GFs',th:'p-l3dja5GFs_05.jpg',tag:'On Solana · Product demo · May 2026'},
- {id:'rrXsN7-9RNI',th:'rrXsN7-9RNI_n37.jpg',tag:'Jupiter · Memecoins / Murad · Oct 2024'},
- {id:'th2x5Q5V6Ig',th:'th2x5Q5V6Ig_n15.jpg',tag:'Jupiter · Tokenized stocks · Jul 2025'},
- {id:'hobba',th:'hobba_11.jpg',tag:'Hobba · Borrow better · Jul 2026'},
- {id:'aitop6',th:'aitop6_05.jpg',tag:'AI with Seb · Top 6 AI models · Apr 2026'},
- {id:'investhodl',th:'investhodl_04.jpg',tag:'Trader Nation · Invest and HODL · Oct 2025'},
- {id:'riskmgmt',th:'riskmgmt_06.jpg',tag:'Trader Nation · Risk management · Oct 2025'},
  {id:'psychology',th:'psychology_09.jpg',tag:'Trader Nation · Trading psychology · Oct 2025'},
- {id:'fogo',th:'fogo_02.jpg',tag:'Fogo · What excites about Fogo · Jan 2026'},
- {id:'kast',th:'kast_01.jpg',tag:'Kast · Ad · Jul 2026'}
+ {id:'U0ySjI4x7DM',th:'U0ySjI4x7DM_n20.jpg',tag:'Jupiter · Mobile app · Apr 2025'},
+ {id:'kast',th:'kast_01.jpg',tag:'Kast · Ad · Jul 2026'},
+ {id:'rrXsN7-9RNI',th:'rrXsN7-9RNI_n37.jpg',tag:'Jupiter · Memecoins / Murad · Oct 2024'},
+ {id:'aitop6',th:'aitop6_05.jpg',tag:'AI with Seb · Top 6 AI models · Apr 2026'},
+ {id:'th2x5Q5V6Ig',th:'th2x5Q5V6Ig_n15.jpg',tag:'Jupiter · Tokenized stocks · Jul 2025'},
+ {id:'p-l3dja5GFs',th:'p-l3dja5GFs_05.jpg',tag:'On Solana · Product demo · May 2026'}
 ];
 // All animation + AI motion, one bucket (no AI / non-AI split).
-// Rows of 3: ZINC row, ZINC+Jupiter row, the three wallet staking cards (on their brand
-// gradients), then the two wide tiles. 11 items -> last 2 wide.
+// Intercalated so no channel appears twice in a row: the five ZINC pieces alternate with
+// Zcash and the three wallet gradient cards; the two wide closers are Jupiter + the film trailer.
 const ANIMG=[
  {src:'assets/videos/E59_LfnkCZE.mp4',poster:'assets/picks_anim/e59_00.jpg',tag:'ZINC · Official teaser · May 2026'},
- {src:'assets/clips/ai1.mp4',poster:'assets/picks_anim/ai1_01.jpg',tag:'ZINC · AI animation · 2026'},
- {src:'assets/clips/ai4.mp4',poster:'assets/picks_anim/ai4_04.jpg',tag:'ZINC · AI animation · 2026'},
- {src:'assets/clips/ai3.mp4',poster:'assets/picks_anim/ai3_03.jpg',tag:'ZINC · AI animation · 2026'},
- {src:'assets/clips/ai2.mp4',poster:'assets/picks_anim/ai2_02.jpg',tag:'ZINC · AI animation · 2026'},
- {src:'assets/clips/animation.mp4',poster:'assets/picks_anim/animation_06.jpg',tag:'Jupiter · Verified, not extinct · Jun 2026'},
- {src:'assets/clips/backpackcard.mp4',poster:'assets/picks/backpackcard_01.jpg',tag:'Backpack · Staking card animation · 2026'},
- {src:'assets/clips/phantomcard.mp4',poster:'assets/picks/phantomcard_01.jpg',tag:'Phantom · Staking card animation · 2026'},
- {src:'assets/clips/solflarecard.mp4',poster:'assets/picks/solflarecard_01.jpg',tag:'Solflare · Staking card animation · 2026'},
  {src:'assets/clips/mertman.mp4',poster:'assets/clips/mertman.jpg',tag:'Zcash · Mertman · Dec 2025'},
+ {src:'assets/clips/ai1.mp4',poster:'assets/picks_anim/ai1_01.jpg',tag:'ZINC · AI animation · 2026'},
+ {src:'assets/clips/backpackcard.mp4',poster:'assets/picks/backpackcard_01.jpg',tag:'Backpack · Staking card animation · 2026'},
+ {src:'assets/clips/ai2.mp4',poster:'assets/picks_anim/ai2_02.jpg',tag:'ZINC · AI animation · 2026'},
+ {src:'assets/clips/phantomcard.mp4',poster:'assets/picks/phantomcard_01.jpg',tag:'Phantom · Staking card animation · 2026'},
+ {src:'assets/clips/ai3.mp4',poster:'assets/picks_anim/ai3_03.jpg',tag:'ZINC · AI animation · 2026'},
+ {src:'assets/clips/solflarecard.mp4',poster:'assets/picks/solflarecard_01.jpg',tag:'Solflare · Staking card animation · 2026'},
+ {src:'assets/clips/ai4.mp4',poster:'assets/picks_anim/ai4_04.jpg',tag:'ZINC · AI animation · 2026'},
+ {src:'assets/clips/animation.mp4',poster:'assets/picks_anim/animation_06.jpg',tag:'Jupiter · Verified, not extinct · Jun 2026'},
  {src:'assets/clips/demonios.mp4',poster:'assets/picks_anim/demonios_02.jpg',tag:'Os Demónios do Meu Avô · Film trailer · 2022'}
 ];
 // Logos are each team's X (Twitter) profile picture, stored locally in assets/clients/.
