@@ -83,6 +83,19 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
 @media(max-width:820px){.svc-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.svc-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
 
+/* JOURNEY TIMELINE */
+.tl{margin-top:42px;border-left:2px solid var(--line);padding-left:30px;display:flex;flex-direction:column;gap:36px;max-width:820px}
+.tlrow{position:relative}
+.tlrow::before{content:'';position:absolute;left:-37px;top:5px;width:12px;height:12px;background:var(--ink);border-radius:50%}
+.tlyear{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--sub)}
+.tlrow h3{font-size:18px;font-weight:800;margin-top:4px;letter-spacing:-.01em}
+.tlrow p{font-size:14px;color:var(--sub);margin-top:6px;line-height:1.55;max-width:640px}
+.tllinks{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}
+.tlth{position:relative;width:138px;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line);padding:0;background:#000;cursor:pointer;display:block;font:inherit;text-align:left;transition:transform .15s}
+.tlth:hover{transform:translateY(-2px)}
+.tlth img{width:100%;height:100%;object-fit:cover;display:block}
+.tlth span{position:absolute;left:0;right:0;bottom:0;font-size:9.5px;font-weight:700;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.8),transparent);padding:12px 7px 5px;letter-spacing:.05em;text-transform:uppercase}
+
 /* PER-CHANNEL RESULTS (stacked, full width) */
 .chanres{display:grid;grid-template-columns:1fr;gap:16px;margin-top:48px}
 .cr{border:1px solid var(--line);border-radius:14px;padding:22px 22px 16px;background:var(--bg)}
@@ -92,7 +105,8 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
 .crs{font-size:12.5px;color:var(--sub);margin-top:2px;line-height:1.4}
 .crvids{display:grid;grid-template-columns:1fr 1fr;gap:26px;border-top:1px solid var(--line);padding:20px 0}
 .crvids.one{grid-template-columns:1fr;max-width:540px}
-.yv{display:block}
+.yv{display:block;color:inherit;text-decoration:none}
+a.yv:hover .yvt{text-decoration:underline}
 .yv img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--bg2)}
 .yvb{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 13px;border-radius:100px;margin:14px 0 0}
 .yvb.notmine{background:var(--bg2);color:var(--sub);border:1px solid var(--line)}
@@ -200,6 +214,8 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
 .mvid{position:relative;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden;box-shadow:0 40px 90px -30px #000}
 .mvid iframe,.mvid video{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
 .mimg{display:block;max-width:95vw;max-height:90vh;margin:0 auto;border-radius:8px}
+.mdesc{position:absolute;left:16px;bottom:16px;max-width:min(430px,72%);background:rgba(8,8,10,.55);backdrop-filter:blur(5px);color:#fff;padding:13px 16px;font-size:12.5px;line-height:1.55;z-index:2;pointer-events:none}
+.mdesc b{font-weight:700}
 .mclose{position:fixed;top:20px;right:24px;z-index:1001;background:#fff;color:var(--ink);border:0;width:44px;height:44px;border-radius:50%;font-size:17px;cursor:pointer}
 
 @media(max-width:900px){.bgrid{grid-template-columns:repeat(4,1fr)}.bgrid169 .bcell,.bgrid169 .bcell.wide{grid-column:span 3;aspect-ratio:16/9}.bgrid4{grid-template-columns:repeat(2,1fr)}.menu a:not(.talk){display:none}}
@@ -210,7 +226,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
 
 <header class="bar"><div class="row">
   <a href="#top" class="logo">Pedro</a>
-  <nav class="menu"><a href="#work">Work</a><a href="#animations">Animation</a><a href="#branding">Branding</a><a href="#contact" class="talk">Let's talk</a></nav>
+  <nav class="menu"><a href="#work">Work</a><a href="#animations">Animation</a><a href="#branding">Branding</a><a href="#journey">Journey</a><a href="#contact" class="talk">Let's talk</a></nav>
 </div></header>
 
 <main id="top">
@@ -220,7 +236,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
     <div class="scrim"></div>
     <div class="inner">
       <h1>Hi, I'm Pedro.</h1>
-      <p>I make visual content people actually watch. Editing, motion graphics and original 2D and 3D animation for creators and brands, backed by a degree in digital animation.</p>
+      <p>I make videos people actually finish. Editing, motion design and original animation, backed by a digital animation degree.</p>
       <div class="cta">
         <button class="btn btn-solid" onclick="go('work')">See the work</button>
         <button class="btn btn-ghost" onclick="go('contact')">Get in touch</button>
@@ -237,7 +253,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
     <div class="lead-block">
       <span class="eyebrow">What I do</span>
       <h2 class="secttl">Editing that earns attention, and turns it into growth.</h2>
-      <p class="sectp">Great content gets scrolled past if the edit doesn't hold. I cut for pacing and retention, match it to your brand, and build the motion and animation that make it stick. Trained in digital animation, from 3D and hand-drawn 2D to stop-motion, nominated for Best Young Filmmaker at Cine Anima 2020, and part of the team behind Os Demónios do Meu Avô, Portugal's first stop-motion feature. One person, the whole pipeline.</p>
+      <p class="sectp">If the edit doesn't hold, the video dies. I cut for retention, brand it, and animate what makes it stick. One person, the whole pipeline.</p>
     </div>
     <div class="tools">
       <div class="chiplegend"><span class="li-app"><i></i>Apps</span><span class="li-skill"><i></i>Skills</span></div>
@@ -265,7 +281,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
     <div class="lead-block">
       <span class="eyebrow">The results</span>
       <h2 class="secttl">The edits perform.</h2>
-      <p class="sectp">Real numbers, pulled straight from YouTube as of July 2026, from multiple channels: Jupiter Onchain, Seb Montgomery, AI with Seb, On Solana, ZINC, UPROCK and more.</p>
+      <p class="sectp">Real numbers from YouTube, July 2026: Jupiter Onchain, Seb Montgomery, AI with Seb, On Solana, ZINC, UPROCK and more. Click any video to check for yourself.</p>
     </div>
     <div class="stats">
       <div class="stat"><div class="num">1.5M+</div><div class="lbl">views across my edits</div></div>
@@ -277,54 +293,54 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
       <div class="cr">
         <div class="crh"><img src="assets/clients/seb.jpg" alt=""><div><div class="crn">Seb Montgomery</div><div class="crs">227 videos · 926K views</div></div></div>
         <div class="crvids">
-          <div class="yv"><img loading="lazy" src="assets/results/iwWUqTpn0CQ.jpg"><div>
+          <a class="yv" href="https://www.youtube.com/watch?v=iwWUqTpn0CQ" target="_blank" rel="noopener"><img loading="lazy" src="assets/results/iwWUqTpn0CQ.jpg"><div>
             <span class="yvb notmine">Not my video</span>
             <div class="yvt">These Are THE BEST Crypto Portfolios of 2025!</div>
             <div class="yvd">The next upload, nine days later · Sep 2025</div>
             <div class="yvn"><b>2,042</b> views · 119 likes · 19 comments</div>
-          </div></div>
-          <div class="yv"><img loading="lazy" src="assets/results/ZPReMS8bnlA.jpg"><div>
+          </div></a>
+          <a class="yv" href="https://www.youtube.com/watch?v=ZPReMS8bnlA" target="_blank" rel="noopener"><img loading="lazy" src="assets/results/ZPReMS8bnlA.jpg"><div>
             <span class="yvb mine">My video</span>
             <div class="yvt">The Solana Seeker Phone is Here and it's ... Free?</div>
             <div class="yvd">Sep 2025</div>
             <div class="yvn"><b>54,253</b> views · 1,229 likes · 191 comments</div>
-          </div></div>
+          </div></a>
         </div>
         <div class="crfoot">26x the views of the upload right after it.</div>
       </div>
       <div class="cr">
         <div class="crh"><img src="assets/clients/jupiter.jpg" alt=""><div><div class="crn">Jupiter Onchain</div><div class="crs">381 videos · 648K views</div></div></div>
         <div class="crvids">
-          <div class="yv"><img loading="lazy" src="assets/results/9WiY0qWpnUU.jpg"><div>
+          <a class="yv" href="https://www.youtube.com/watch?v=9WiY0qWpnUU" target="_blank" rel="noopener"><img loading="lazy" src="assets/results/9WiY0qWpnUU.jpg"><div>
             <span class="yvb notmine">Not my video</span>
             <div class="yvt">You Don't Want to Miss The First Jupiverse Event</div>
             <div class="yvd">Posted two weeks later · Nov 2024</div>
             <div class="yvn"><b>636</b> views · 58 likes · 18 comments</div>
-          </div></div>
-          <div class="yv"><img loading="lazy" src="assets/results/rrXsN7-9RNI.jpg"><div>
+          </div></a>
+          <a class="yv" href="https://www.youtube.com/watch?v=rrXsN7-9RNI" target="_blank" rel="noopener"><img loading="lazy" src="assets/results/rrXsN7-9RNI.jpg"><div>
             <span class="yvb mine">My video</span>
             <div class="yvt">Follow Murad Mahmudov NOW or Miss This Next Bitcoin-Level Explosion</div>
             <div class="yvd">Oct 2024</div>
             <div class="yvn"><b>15,026</b> views · 528 likes · 95 comments</div>
-          </div></div>
+          </div></a>
         </div>
         <div class="crfoot">23x the channel's typical upload of that period.</div>
       </div>
       <div class="cr">
         <div class="crh"><img src="assets/clients/jupiter.jpg" alt=""><div><div class="crn">Jupiter Exchange</div><div class="crs">Animation for Jupiter's X account · @JupiterExchange</div></div></div>
         <div class="crvids">
-          <div class="yv"><img loading="lazy" src="assets/results/jupx_worldcup.jpg"><div>
+          <a class="yv" href="https://x.com/JupiterExchange/status/2062903963893277153" target="_blank" rel="noopener"><img loading="lazy" src="assets/results/jupx_worldcup.jpg"><div>
             <span class="yvb notmine">Not my video</span>
             <div class="yvt">The $125,000 World Cup Challenge on Jupiter Predict</div>
             <div class="yvd">Posted two days later · Jun 2026</div>
             <div class="yvn"><b>45,206</b> views · 307 likes</div>
-          </div></div>
-          <div class="yv"><img loading="lazy" src="assets/picks_anim/animation_06.jpg"><div>
+          </div></a>
+          <a class="yv" href="https://x.com/JupiterExchange/status/2062013024802877817" target="_blank" rel="noopener"><img loading="lazy" src="assets/picks_anim/animation_06.jpg"><div>
             <span class="yvb mine">My video</span>
             <div class="yvt">Verified, Not Extinct: 2D animation for Jupiter's verification push</div>
             <div class="yvd">Posted on X · Jun 2026</div>
             <div class="yvn"><b>234,436</b> views · 590 likes</div>
-          </div></div>
+          </div></a>
         </div>
         <div class="crfoot">5x the views of the account's regular video posts.</div>
       </div>
@@ -336,7 +352,7 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
     <div class="lead-block">
       <span class="eyebrow">Branding</span>
       <h2 class="secttl">I not only edit, I also build brands.</h2>
-      <p class="sectp">Not just video. I build brand identities too. Pick a brand to open its full kit: logos, colour, type, world art and posts.</p>
+      <p class="sectp">Pick a brand to open its full kit: logos, colour, type, world art and posts.</p>
     </div>
   </div>
   <div class="brandbtns" id="brandbtns"></div>
@@ -352,17 +368,75 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
   </section>
   <div id="brandpanels"></div>
 
+  <!-- JOURNEY: visual timeline of the artistic path -->
+  <section class="textsec" id="journey"><div class="wrap">
+    <div class="lead-block">
+      <span class="eyebrow">The journey</span>
+      <h2 class="secttl">From art kid to the whole pipeline.</h2>
+    </div>
+    <div class="tl">
+      <div class="tlrow">
+        <div class="tlyear">2018 · 2021</div>
+        <h3>Digital animation degree</h3>
+        <p>Art school into a digital animation degree: 3D modelling, texturing, rigging, lighting, motion capture, hand-drawn 2D and stopmotion. Nominated for Best Young Filmmaker at Cine Anima 2020 for Descoberta Geométrica.</p>
+      </div>
+      <div class="tlrow">
+        <div class="tlyear">2022</div>
+        <h3>Portugal's first stop-motion feature</h3>
+        <p>Part of the animation team behind Os Demónios do Meu Avô.</p>
+        <div class="tllinks">
+          <button class="tlth" onclick="playTL('assets/clips/demonios.mp4','Trailer of Os Demónios do Meu Avô (2022), Portugal\'s first stop-motion feature film. I was part of the animation team.')"><img loading="lazy" src="assets/picks_anim/demonios_02.jpg"><span>Trailer</span></button>
+        </div>
+      </div>
+      <div class="tlrow">
+        <div class="tlyear">2022 · 2023</div>
+        <h3>3D portfolio</h3>
+        <p>Personal projects, modelled, textured, rigged and rendered by me.</p>
+        <div class="tllinks">
+          <button class="tlth" onclick="playTL('assets/threed/whaleship/v01.mp4','The Whale Ship. Modelled, textured, rigged and animated by me.')"><img loading="lazy" src="assets/threed/whaleship/thumb/01.jpg"><span>Whale ship</span></button>
+          <button class="tlth" onclick="playTL('assets/threed/car/v01.mp4','70\'s Dodge Charger. Modelled, textured and rendered by me, night city animation included.')"><img loading="lazy" src="assets/threed/car/thumb/01.jpg"><span>Dodge Charger</span></button>
+          <button class="tlth" onclick="playTL('assets/threed/house/v01.mp4','The House diorama. Modelled, textured and rendered by me.')"><img loading="lazy" src="assets/threed/house/thumb/01.jpg"><span>The house</span></button>
+        </div>
+      </div>
+      <div class="tlrow">
+        <div class="tlyear">2023 · 2024</div>
+        <h3>The proposal that started it all</h3>
+        <p>A proposal tweet to Jupiter's Uplink program turned into my editing career, and then into every video on Jupiter Onchain.</p>
+        <div class="tllinks">
+          <button class="tlth" onclick="playTL('assets/videos/rrXsN7-9RNI.mp4','My most-viewed Jupiter edit: 15,026 views, 23x the channel\'s typical upload of that period.')"><img loading="lazy" src="assets/picks/rrXsN7-9RNI_n37.jpg"><span>Murad · 15K views</span></button>
+          <a class="tlth" href="https://x.com/JupiterExchange/status/2062013024802877817" target="_blank" rel="noopener"><img loading="lazy" src="assets/picks_anim/animation_06.jpg"><span>234K views on X</span></a>
+        </div>
+      </div>
+      <div class="tlrow">
+        <div class="tlyear">2024 · 2025</div>
+        <h3>A year of Jupiter Onchain</h3>
+        <p>Every long-form video for a year: 381 edits, 648K views.</p>
+      </div>
+      <div class="tlrow">
+        <div class="tlyear">2025 · Now</div>
+        <h3>Lead editor and brand builder</h3>
+        <p>Lead editor for Seb Montgomery, plus brand builds and launch films: ZINC, Hobba, Fogo, Kast, validator.com and more.</p>
+        <div class="tllinks">
+          <button class="tlth" onclick="playTL('assets/videos/ZPReMS8bnlA.mp4','Solana Seeker review for Seb Montgomery: 54,253 views, 26x the upload right after it.')"><img loading="lazy" src="assets/picks/ZPReMS8bnlA_n12.jpg"><span>Seeker · 54K views</span></button>
+          <button class="tlth" onclick="playTL('assets/videos/hobba.mp4','Product film for Hobba. Edit and motion design by me.')"><img loading="lazy" src="assets/picks/hobba_11.jpg"><span>Hobba</span></button>
+          <button class="tlth" onclick="openBrand('brand-zinc')"><img loading="lazy" src="assets/branding/thumb/brand-17.jpg"><span>ZINC brand</span></button>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
   <!-- COMMENTS (right-to-left marquee of window cards) -->
   <section class="chan" id="comments"><div class="cmarq"><div class="ctrack2" id="ctrack2"></div></div></section>
 
   <!-- CONTACT -->
   <section class="contact" id="contact"><div class="wrap">
     <h2>Let's make something.</h2>
-    <p>Open for freelance edits, animation and one-off projects. The button drops you straight into my X DMs.</p>
+    <p>Freelance edits, animation and brand builds. The button drops you straight into my X DMs.</p>
     <div class="cta"><button class="btn btn-solid" style="border-color:var(--ink);color:#fff;background:var(--ink)" onclick="window.open('https://x.com/messages/compose?recipient_id=1802398442666196992','_blank')">Get in touch</button></div>
+    <p style="margin-top:18px;font-size:14px">or email <a href="mailto:defiseeds@gmail.com" style="font-weight:600;text-decoration:underline">defiseeds@gmail.com</a></p>
   </div></section>
   <div class="foot"><div class="row"><span class="logo" style="color:var(--ink)">Pedro</span>
-    <div class="socials"><a href="https://x.com/Pedro_TheEditor" target="_blank" rel="noopener">X</a></div></div></div>
+    <div class="socials"><a href="https://x.com/Pedro_TheEditor" target="_blank" rel="noopener">X</a><a href="mailto:defiseeds@gmail.com">Email</a></div></div></div>
 </main>
 
 <div id="modal" class="modal" onclick="if(event.target===this)closeModal()"><button class="mclose" onclick="closeModal()">✕</button><div class="mbody"></div></div>
@@ -372,47 +446,48 @@ h1,h2,h3{letter-spacing:-.02em;line-height:1.05}
 // Order deliberately interleaves channels (2 Jupiter, 1 other) so the colour is spread through the wall
 // instead of a solid block of Jupiter, and never puts two non-Jupiter tiles side by side.
 // 12 Jupiter + 12 other channels = strict alternation, so no channel ever appears twice in a row.
+// d = short role description shown bottom-left while the video plays.
 const VIDEOS=[
- {id:'QB5pY5L-tJ8',th:'QB5pY5L-tJ8_06.jpg',tag:'Jupiter · Intro · Mar 2025'},
- {id:'ZPReMS8bnlA',th:'ZPReMS8bnlA_n12.jpg',tag:'Seb Montgomery · Solana Seeker · Sep 2025'},
- {id:'h20EDsawRR4',th:'h20EDsawRR4_n17.jpg',tag:'Jupiter · Airdrops · Jun 2025'},
- {id:'investhodl',th:'investhodl_04.jpg',tag:'Trader Nation · Invest and HODL · Oct 2025'},
- {id:'PFPLTNyFOUw',th:'PFPLTNyFOUw_n00.jpg',tag:'Jupiter · Perps · May 2025'},
- {id:'8OYRlCLIayA',th:'8OYRlCLIayA_n01.jpg',tag:'Seb Montgomery · Arcium · May 2026'},
- {id:'k0ZtXNgV-gg',th:'k0ZtXNgV-gg_n34.jpg',tag:'Jupiter · Airdrops · Jul 2025'},
- {id:'hobba',th:'hobba_11.jpg',tag:'Hobba · Borrow better · Jul 2026'},
- {id:'n568ZTSWRWg',th:'n568ZTSWRWg_n17.jpg',tag:'Jupiter · DCA strategy · May 2025'},
- {id:'DqZ8V2RSCcQ',th:'DqZ8V2RSCcQ_03.jpg',tag:'On Solana · Pitch · May 2026'},
- {id:'DCOgQzttsCk',th:'DCOgQzttsCk_n12.jpg',tag:'Jupiter · Self-custody · Jun 2025'},
- {id:'riskmgmt',th:'riskmgmt_06.jpg',tag:'Trader Nation · Risk management · Oct 2025'},
- {id:'5LS2WfFt78I',th:'5LS2WfFt78I_14.jpg',tag:'Jupiter · Memecoins · Jun 2025'},
- {id:'fogo',th:'fogo_02.jpg',tag:'Fogo · What excites about Fogo · Jan 2026'},
- {id:'9WiY0qWpnUU',th:'9WiY0qWpnUU_n14.jpg',tag:'Jupiter · Jupiverse event · Nov 2024'},
- {id:'_CBKfzWiIVo',th:'_CBKfzWiIVo_n45.jpg',tag:'Seb Montgomery · Backpack · Feb 2026'},
- {id:'TOfcZklZIKU',th:'TOfcZklZIKU_n37.jpg',tag:'Jupiter · Token verification · May 2025'},
- {id:'psychology',th:'psychology_09.jpg',tag:'Trader Nation · Trading psychology · Oct 2025'},
- {id:'U0ySjI4x7DM',th:'U0ySjI4x7DM_n20.jpg',tag:'Jupiter · Mobile app · Apr 2025'},
- {id:'kast',th:'kast_01.jpg',tag:'Kast · Ad · Jul 2026'},
- {id:'rrXsN7-9RNI',th:'rrXsN7-9RNI_n37.jpg',tag:'Jupiter · Memecoins / Murad · Oct 2024'},
- {id:'aitop6',th:'aitop6_05.jpg',tag:'AI with Seb · Top 6 AI models · Apr 2026'},
- {id:'th2x5Q5V6Ig',th:'th2x5Q5V6Ig_n15.jpg',tag:'Jupiter · Tokenized stocks · Jul 2025'},
- {id:'p-l3dja5GFs',th:'p-l3dja5GFs_05.jpg',tag:'On Solana · Product demo · May 2026'}
+ {id:'QB5pY5L-tJ8',th:'QB5pY5L-tJ8_06.jpg',tag:'Jupiter · Intro · Mar 2025',d:'Channel intro for Jupiter Onchain. I built the paper-collage template, branded every on-screen element and animated all the motion graphics.'},
+ {id:'ZPReMS8bnlA',th:'ZPReMS8bnlA_n12.jpg',tag:'Seb Montgomery · Solana Seeker · Sep 2025',d:'Product review for Seb Montgomery. Edit, pacing and the on-screen spec breakdowns are mine. 54K views, 26x the upload right after it.'},
+ {id:'h20EDsawRR4',th:'h20EDsawRR4_n17.jpg',tag:'Jupiter · Airdrops · Jun 2025',d:'Airdrop tutorial for Jupiter Onchain. Branded template, edit and the animated UI walkthroughs by me.'},
+ {id:'investhodl',th:'investhodl_04.jpg',tag:'Trader Nation · Invest and HODL · Oct 2025',d:'Long-form lesson for Trader Nation. I created the brand and its video template, then cut and animated the whole piece.'},
+ {id:'PFPLTNyFOUw',th:'PFPLTNyFOUw_n00.jpg',tag:'Jupiter · Perps · May 2025',d:'Step-by-step leverage guide for Jupiter Onchain. Template, chart animations and callouts all built by me.'},
+ {id:'8OYRlCLIayA',th:'8OYRlCLIayA_n01.jpg',tag:'Seb Montgomery · Arcium · May 2026',d:'Project explainer for Seb Montgomery. I cut the story and animated the torn-paper graphics in the channel style I designed.'},
+ {id:'k0ZtXNgV-gg',th:'k0ZtXNgV-gg_n34.jpg',tag:'Jupiter · Airdrops · Jul 2025',d:'Airdrop guide for Jupiter Onchain. Edit, phone-UI motion design and collage branding by me.'},
+ {id:'hobba',th:'hobba_11.jpg',tag:'Hobba · Borrow better · Jul 2026',d:'Product film for Hobba. I edited the piece and animated the paper-cutout planes, coins and UI cards.'},
+ {id:'n568ZTSWRWg',th:'n568ZTSWRWg_n17.jpg',tag:'Jupiter · DCA strategy · May 2025',d:'DCA explainer for Jupiter Onchain. Template, greenscreen cutouts and motion graphics by me.'},
+ {id:'DqZ8V2RSCcQ',th:'DqZ8V2RSCcQ_03.jpg',tag:'On Solana · Pitch · May 2026',d:'Hackathon pitch for On Solana. Rhythm, edit and motion design by me.'},
+ {id:'DCOgQzttsCk',th:'DCOgQzttsCk_n12.jpg',tag:'Jupiter · Self-custody · Jun 2025',d:'Self-custody story for Jupiter Onchain. I animated the map sequence and built the branded collage template.'},
+ {id:'riskmgmt',th:'riskmgmt_06.jpg',tag:'Trader Nation · Risk management · Oct 2025',d:'Risk management lessons for Trader Nation. Brand, template and every chart overlay created and animated by me.'},
+ {id:'5LS2WfFt78I',th:'5LS2WfFt78I_14.jpg',tag:'Jupiter · Memecoins · Jun 2025',d:'Memecoin guide for Jupiter Onchain. Edit, slot-machine collage and motion graphics by me.'},
+ {id:'fogo',th:'fogo_02.jpg',tag:'Fogo · What excites about Fogo · Jan 2026',d:'Interview edit for Fogo. Cut, pacing and branded graphics by me.'},
+ {id:'9WiY0qWpnUU',th:'9WiY0qWpnUU_n14.jpg',tag:'Jupiter · Jupiverse event · Nov 2024',d:'Event interview for Jupiter Onchain. Two-camera edit and branded frames by me.'},
+ {id:'_CBKfzWiIVo',th:'_CBKfzWiIVo_n45.jpg',tag:'Seb Montgomery · Backpack · Feb 2026',d:'Backpack deep-dive for Seb Montgomery. Edit and screen-capture motion design by me.'},
+ {id:'TOfcZklZIKU',th:'TOfcZklZIKU_n37.jpg',tag:'Jupiter · Token verification · May 2025',d:'Verification guide for Jupiter Onchain. Template, branding and UI animations by me.'},
+ {id:'psychology',th:'psychology_09.jpg',tag:'Trader Nation · Trading psychology · Oct 2025',d:'Trading psychology for Trader Nation. I built the brand and template, then edited and animated the full video.'},
+ {id:'U0ySjI4x7DM',th:'U0ySjI4x7DM_n20.jpg',tag:'Jupiter · Mobile app · Apr 2025',d:'Jupiter Mobile walkthrough. Edit, phone mockups and collage branding by me.'},
+ {id:'kast',th:'kast_01.jpg',tag:'Kast · Ad · Jul 2026',d:'Ad for Kast. Concept-to-delivery edit with motion design by me.'},
+ {id:'rrXsN7-9RNI',th:'rrXsN7-9RNI_n37.jpg',tag:'Jupiter · Memecoins / Murad · Oct 2024',d:'My most-viewed Jupiter edit: 15K views, 23x the channel\'s typical upload. Full edit, collage template and motion graphics by me.'},
+ {id:'aitop6',th:'aitop6_05.jpg',tag:'AI with Seb · Top 6 AI models · Apr 2026',d:'Model comparison for AI with Seb. Edit, side-by-side test graphics and branded template by me.'},
+ {id:'th2x5Q5V6Ig',th:'th2x5Q5V6Ig_n15.jpg',tag:'Jupiter · Tokenized stocks · Jul 2025',d:'Tokenized stocks explainer for Jupiter Onchain. Edit and every animated element by me.'},
+ {id:'p-l3dja5GFs',th:'p-l3dja5GFs_05.jpg',tag:'On Solana · Product demo · May 2026',d:'Product demo for On Solana. Edit and interface motion design by me.'}
 ];
 // All animation + AI motion, one bucket (no AI / non-AI split).
 // Intercalated so no channel appears twice in a row: the five ZINC pieces alternate with
 // Zcash and the three wallet gradient cards; the two wide closers are Jupiter + the film trailer.
 const ANIMG=[
- {src:'assets/videos/E59_LfnkCZE.mp4',poster:'assets/picks_anim/e59_00.jpg',tag:'ZINC · Official teaser · May 2026'},
- {src:'assets/clips/mertman.mp4',poster:'assets/clips/mertman.jpg',tag:'Zcash · Mertman · Dec 2025'},
- {src:'assets/clips/ai1.mp4',poster:'assets/picks_anim/ai1_01.jpg',tag:'ZINC · AI animation · 2026'},
- {src:'assets/clips/backpackcard.mp4',poster:'assets/picks/backpackcard_01.jpg',tag:'Backpack · Staking card animation · 2026'},
- {src:'assets/clips/ai2.mp4',poster:'assets/picks_anim/ai2_02.jpg',tag:'ZINC · AI animation · 2026'},
- {src:'assets/clips/phantomcard.mp4',poster:'assets/picks/phantomcard_01.jpg',tag:'Phantom · Staking card animation · 2026'},
- {src:'assets/clips/ai3.mp4',poster:'assets/picks_anim/ai3_03.jpg',tag:'ZINC · AI animation · 2026'},
- {src:'assets/clips/solflarecard.mp4',poster:'assets/picks/solflarecard_01.jpg',tag:'Solflare · Staking card animation · 2026'},
- {src:'assets/clips/ai4.mp4',poster:'assets/picks_anim/ai4_04.jpg',tag:'ZINC · AI animation · 2026'},
- {src:'assets/clips/animation.mp4',poster:'assets/picks_anim/animation_06.jpg',tag:'Jupiter · Verified, not extinct · Jun 2026'},
- {src:'assets/clips/demonios.mp4',poster:'assets/picks_anim/demonios_02.jpg',tag:'Os Demónios do Meu Avô · Film trailer · 2022'}
+ {src:'assets/videos/E59_LfnkCZE.mp4',poster:'assets/picks_anim/e59_00.jpg',tag:'ZINC · Official teaser · May 2026',d:'Official ZINC teaser. I directed the AI generations shot by shot for style cohesion, then composited, graded and cut the film.'},
+ {src:'assets/clips/mertman.mp4',poster:'assets/clips/mertman.jpg',tag:'Zcash · Mertman · Dec 2025',d:'Zcash story for GenZcash. AI-assisted animation: I designed the world, prompted every shot for a consistent style and finished the edit.'},
+ {src:'assets/clips/ai1.mp4',poster:'assets/picks_anim/ai1_01.jpg',tag:'ZINC · AI animation · 2026',d:'ZINC world piece. AI-assisted: prompt-directed by me with JSON style control, then composited and cut.'},
+ {src:'assets/clips/backpackcard.mp4',poster:'assets/picks/backpackcard_01.jpg',tag:'Backpack · Staking card animation · 2026',d:'Staking promo for validator.com inside Backpack. I built and branded the card template and animated it end to end.'},
+ {src:'assets/clips/ai2.mp4',poster:'assets/picks_anim/ai2_02.jpg',tag:'ZINC · AI animation · 2026',d:'ZINC character short. Style-cohesive AI generation directed, composited and edited by me.'},
+ {src:'assets/clips/phantomcard.mp4',poster:'assets/picks/phantomcard_01.jpg',tag:'Phantom · Staking card animation · 2026',d:'Staking promo for validator.com inside Phantom. Template, branding and animation by me.'},
+ {src:'assets/clips/ai3.mp4',poster:'assets/picks_anim/ai3_03.jpg',tag:'ZINC · AI animation · 2026',d:'ZINC mine sequence. AI-assisted shots art-directed, composited and cut by me.'},
+ {src:'assets/clips/solflarecard.mp4',poster:'assets/picks/solflarecard_01.jpg',tag:'Solflare · Staking card animation · 2026',d:'Staking promo for validator.com inside Solflare. Template, branding and animation by me.'},
+ {src:'assets/clips/ai4.mp4',poster:'assets/picks_anim/ai4_04.jpg',tag:'ZINC · AI animation · 2026',d:'ZINC bonanza scene. AI-assisted animation directed and finished by me.'},
+ {src:'assets/clips/animation.mp4',poster:'assets/picks_anim/animation_06.jpg',tag:'Jupiter · Verified, not extinct · Jun 2026',d:'Verified, Not Extinct for Jupiter: 234K views on X. AI-assisted campaign piece prompted, composited and cut by me.'},
+ {src:'assets/clips/demonios.mp4',poster:'assets/picks_anim/demonios_02.jpg',tag:'Os Demónios do Meu Avô · Film trailer · 2022',d:'Trailer of Os Demónios do Meu Avô (2022), Portugal\'s first stop-motion feature film. I was part of the animation team.'}
 ];
 // Logos are each team's X (Twitter) profile picture, stored locally in assets/clients/.
 // turbine.cash links to the original @turbine_cash handle per Pedro, even though that account
@@ -459,9 +534,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 const YTCLEAN='controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&fs=0&playsinline=1&color=white';
 function openItem(it){
  if(it.type==='yt') openModal(`<div class="mvid"><iframe src="https://www.youtube.com/embed/${it.id}?autoplay=1&loop=1&playlist=${it.id}&${YTCLEAN}" allow="autoplay; encrypted-media"></iframe></div>`);
- else if(it.type==='clip') openModal(`<div class="mvid"><video src="${it.src}" autoplay loop playsinline></video></div>`);
+ else if(it.type==='clip') openModal(`<div class="mvid"><video src="${it.src}" autoplay loop playsinline></video>${it.desc?`<div class="mdesc">${esc(it.desc)}</div>`:''}</div>`);
  else openModal(`<img class="mimg" src="${it.img}">`);
 }
+// timeline helper: play a clip with its description overlay
+function playTL(src,desc){openItem({type:'clip',src:src,desc:desc});}
 
 // Static thumbnail tiles. No autoplay on scroll. Hover lightens + reveals the tag. Click opens the clean player.
 function tileHTML(poster,tag){
@@ -477,11 +554,11 @@ function fillLastRow(grid){
 const videoGrid=document.getElementById('videoGrid');
 videoGrid.innerHTML=VIDEOS.map(o=>`<button class="vtile">${tileHTML('assets/picks/'+o.th,o.tag)}</button>`).join('');
 fillLastRow(videoGrid);
-[...videoGrid.children].forEach((el,i)=>{ el.onclick=()=>openItem({type:'clip',src:'assets/videos/'+VIDEOS[i].id+'.mp4'}); });
+[...videoGrid.children].forEach((el,i)=>{ el.onclick=()=>openItem({type:'clip',src:'assets/videos/'+VIDEOS[i].id+'.mp4',desc:VIDEOS[i].d}); });
 const animGrid=document.getElementById('animGrid');
 animGrid.innerHTML=ANIMG.map(o=>`<button class="vtile">${tileHTML(o.poster,o.tag)}</button>`).join('');
 fillLastRow(animGrid);
-[...animGrid.children].forEach((el,i)=>{ el.onclick=()=>openItem({type:'clip',src:ANIMG[i].src}); });
+[...animGrid.children].forEach((el,i)=>{ el.onclick=()=>openItem({type:'clip',src:ANIMG[i].src,desc:ANIMG[i].d}); });
 
 // BRANDING (38 ZINC images grouped: X branding profiles / 16:9 IP world art / branded posts)
 const BRAND_A=[35,34];
