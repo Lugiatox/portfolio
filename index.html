@@ -381,6 +381,9 @@ a.yv:hover .yvt{text-decoration:underline}
         <div class="tlyear">2018 · 2021</div>
         <h3>Digital animation degree</h3>
         <p>Art school into a digital animation degree: 3D modelling, texturing, rigging, lighting, motion capture, hand-drawn 2D and stopmotion. Nominated for Best Young Filmmaker at Cine Anima 2020 for Descoberta Geométrica.</p>
+        <div class="tllinks">
+          <a class="tlth" href="https://www.ulusofona.pt" target="_blank" rel="noopener"><img loading="lazy" src="assets/timeline/lusofona.jpg" style="object-fit:contain;background:#fff"><span>Universidade Lusófona</span></a>
+        </div>
       </div>
       <div class="tlrow">
         <div class="tlyear">Jun 2021 · Feb 2022</div>
@@ -404,25 +407,22 @@ a.yv:hover .yvt{text-decoration:underline}
         <div class="tlyear">Mar 2023 · Aug 2024</div>
         <h3>Editing career begins</h3>
         <p>Every video on Seb Montgomery's channel. From March 2024, also editing for Jupiter Exchange alongside it.</p>
+        <div class="tllinks">
+          <a class="tlth" href="https://www.youtube.com/watch?v=6sl6vIG2Hks" target="_blank" rel="noopener"><img loading="lazy" src="assets/timeline/6sl6vIG2Hks.jpg"><span>Jupiter · Mar 2024</span></a>
+          <a class="tlth" href="https://www.youtube.com/watch?v=4W9KerxX7kI" target="_blank" rel="noopener"><img loading="lazy" src="assets/timeline/4W9KerxX7kI.jpg"><span>Seb · Mar 2024</span></a>
+        </div>
       </div>
       <div class="tlrow">
         <div class="tlyear">Aug 2024 · Aug 2025</div>
         <h3>The Uplink year</h3>
-        <p>A proposal for Jupiter's Uplink program became a year of full-time Jupiter Onchain: 381 edits, 648K views.</p>
-        <div class="tllinks">
-          <button class="tlth" onclick="playTL('assets/videos/rrXsN7-9RNI.mp4','My most-viewed Jupiter edit: 15,026 views, 23x the channel\'s typical upload of that period.')"><img loading="lazy" src="assets/picks/rrXsN7-9RNI_n37.jpg"><span>Murad · 15K views</span></button>
-        </div>
+        <p>A proposal for Jupiter's Uplink program became a year of full-time Jupiter Onchain: 381 edits, 648K views. Every video below is in this portfolio, in release order.</p>
+        <div class="tllinks" id="tl-uplink"></div>
       </div>
       <div class="tlrow">
         <div class="tlyear">Aug 2025 · Now</div>
         <h3>Back with Seb, plus brand builds</h3>
-        <p>Resumed as lead editor for Seb Montgomery, alongside brand builds and launch films: ZINC, Hobba, Fogo, Kast, validator.com and more.</p>
-        <div class="tllinks">
-          <button class="tlth" onclick="playTL('assets/videos/ZPReMS8bnlA.mp4','Solana Seeker review for Seb Montgomery: 54,253 views, 26x the upload right after it.')"><img loading="lazy" src="assets/picks/ZPReMS8bnlA_n12.jpg"><span>Seeker · 54K views</span></button>
-          <button class="tlth" onclick="playTL('assets/videos/hobba.mp4','Product film for Hobba. Edit and motion design by me.')"><img loading="lazy" src="assets/picks/hobba_11.jpg"><span>Hobba</span></button>
-          <button class="tlth" onclick="openBrand('brand-zinc')"><img loading="lazy" src="assets/branding/thumb/brand-17.jpg"><span>ZINC brand</span></button>
-          <a class="tlth" href="https://x.com/JupiterExchange/status/2062013024802877817" target="_blank" rel="noopener"><img loading="lazy" src="assets/picks_anim/animation_06.jpg"><span>234K views on X</span></a>
-        </div>
+        <p>Resumed as lead editor for Seb Montgomery, alongside brand builds, animations and launch films: ZINC, Hobba, Fogo, Kast, validator.com and more.</p>
+        <div class="tllinks" id="tl-now"></div>
       </div>
     </div>
   </div></section>
@@ -540,6 +540,39 @@ function openItem(it){
 }
 // timeline helper: play a clip with its description overlay
 function playTL(src,desc){openItem({type:'clip',src:src,desc:desc});}
+// Timeline tiles, generated from the grids' own data so thumbs and descriptions stay in sync.
+function tlTiles(containerId,items){
+ const el=document.getElementById(containerId); if(!el)return;
+ el.innerHTML=items.map((it,i)=>{
+  if(it.href) return `<a class="tlth" href="${it.href}" target="_blank" rel="noopener"><img loading="lazy" src="${it.img}"><span>${esc(it.label)}</span></a>`;
+  if(it.brand) return `<button class="tlth" data-i="${i}"><img loading="lazy" src="${it.img}"><span>${esc(it.label)}</span></button>`;
+  return `<button class="tlth" data-i="${i}"><img loading="lazy" src="${it.img}"><span>${esc(it.label)}</span></button>`;
+ }).join('');
+ el.querySelectorAll('button.tlth').forEach(b=>{const it=items[+b.dataset.i];
+  b.onclick=()=>{ it.brand?openBrand(it.brand):openItem({type:'clip',src:it.src,desc:it.desc}); };});
+}
+const vById=id=>VIDEOS.find(v=>v.id===id);
+const aBySrc=s=>ANIMG.find(a=>a.src===s);
+// The Uplink year: the 12 Jupiter videos from the work gallery, release order Oct 2024 -> Jul 2025.
+tlTiles('tl-uplink',['rrXsN7-9RNI','9WiY0qWpnUU','QB5pY5L-tJ8','U0ySjI4x7DM','PFPLTNyFOUw','TOfcZklZIKU','n568ZTSWRWg','5LS2WfFt78I','DCOgQzttsCk','h20EDsawRR4','th2x5Q5V6Ig','k0ZtXNgV-gg'].map(id=>{
+ const v=vById(id);const parts=v.tag.split(' · ');
+ return {src:'assets/videos/'+v.id+'.mp4',desc:v.d,img:'assets/picks/'+v.th,label:parts[1]+' · '+parts[2]};
+}));
+// Aug 2025 to now: Seeker, then every animation except the film trailer, then Hobba, the wallet cards and ZINC, release order.
+tlTiles('tl-now',[
+ (()=>{const v=vById('ZPReMS8bnlA');return {src:'assets/videos/ZPReMS8bnlA.mp4',desc:v.d,img:'assets/picks/'+v.th,label:'Seeker · 54K views'};})(),
+ ...['assets/clips/mertman.mp4','assets/videos/E59_LfnkCZE.mp4','assets/clips/ai1.mp4','assets/clips/ai2.mp4','assets/clips/ai3.mp4','assets/clips/ai4.mp4','assets/clips/animation.mp4'].map(s=>{
+  const a=aBySrc(s);const parts=a.tag.split(' · ');
+  return {src:a.src,desc:a.d,img:a.poster,label:parts[0]+' · '+parts[1]};
+ }),
+ {href:'https://x.com/JupiterExchange/status/2062013024802877817',img:'assets/picks_anim/animation_06.jpg',label:'234K views on X'},
+ (()=>{const v=vById('hobba');return {src:'assets/videos/hobba.mp4',desc:v.d,img:'assets/picks/'+v.th,label:'Hobba'};})(),
+ ...['assets/clips/backpackcard.mp4','assets/clips/phantomcard.mp4','assets/clips/solflarecard.mp4'].map(s=>{
+  const a=aBySrc(s);return {src:a.src,desc:a.d,img:a.poster,label:a.tag.split(' · ')[0]+' card'};
+ }),
+ {brand:'brand-zinc',img:'assets/branding/thumb/brand-17.jpg',label:'ZINC brand'}
+]);
+
 // Get in touch chooser: X DMs or email
 function contactChoice(){
  openModal(`<div class="mchoice"><h3>Get in touch</h3>
