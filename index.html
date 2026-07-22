@@ -4,8 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pedro | Video Editor & Animator</title>
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/pfp-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/pfp-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/pfp-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/pfp-192.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -539,7 +541,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 const YTCLEAN='controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&fs=0&playsinline=1&color=white';
 function openItem(it){
  if(it.type==='yt') openModal(`<div class="mvid"><iframe src="https://www.youtube.com/embed/${it.id}?autoplay=1&loop=1&playlist=${it.id}&${YTCLEAN}" allow="autoplay; encrypted-media"></iframe></div>`);
- else if(it.type==='clip') openModal(`<div class="mvid"><video src="${it.src}" autoplay loop playsinline></video>${it.desc?`<div class="mdesc"><img class="mav" src="assets/favicon-192.png" alt="Pedro"><div>${esc(it.desc)}</div></div>`:''}</div>`);
+ else if(it.type==='clip') openModal(`<div class="mvid"><video src="${it.src}" autoplay loop playsinline></video>${it.desc?`<div class="mdesc"><img class="mav" src="assets/pfp-192.png" alt="Pedro"><div>${esc(it.desc)}</div></div>`:''}</div>`);
  else openModal(`<img class="mimg" src="${it.img}">`);
 }
 // timeline helper: play a clip with its description overlay
